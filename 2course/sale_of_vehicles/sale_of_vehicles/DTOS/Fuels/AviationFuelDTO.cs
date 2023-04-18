@@ -1,0 +1,17 @@
+﻿using System;
+
+
+namespace sale_of_vehicles
+{
+    public class AviationFuelDTO
+    {
+        public AviationFuelDTO(Guid id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+    }
+}

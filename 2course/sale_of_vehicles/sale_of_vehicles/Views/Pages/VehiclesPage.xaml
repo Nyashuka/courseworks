@@ -1,0 +1,93 @@
+﻿<Page x:Class="sale_of_vehicles.VehiclesPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:sale_of_vehicles"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      MinHeight="450" MinWidth="800"
+      FontFamily="{DynamicResource MaterialDesignFont}" FontSize="18" >
+
+    <Grid >
+
+        <StackPanel Orientation="Vertical">
+            <Grid Margin="0 10">
+                <TextBox TextAlignment="Center" VerticalAlignment="Top"
+                     IsReadOnly="True"
+                      Text="Filters"></TextBox>
+            </Grid>
+
+            <Grid Margin="0 10">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="25 0">
+
+                    <StackPanel MinWidth="200px" Margin="50 0"  Orientation="Vertical">
+                        <TextBox Text="Type of Vehicle" TextAlignment="Center"/>
+
+                        <ComboBox x:Name="VehicleTypeFilter" HorizontalContentAlignment="Center" SelectionChanged="VehicleTypeFilter_SelectionChanged" >
+                            <ComboBoxItem  Content="All"></ComboBoxItem>
+                            <ComboBoxItem Content="Bus"></ComboBoxItem>
+                            <ComboBoxItem Content="Truck"></ComboBoxItem>
+                            <ComboBoxItem Content="Passenger Plane"></ComboBoxItem>
+                            <ComboBoxItem Content="Transport Plane"></ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <StackPanel MinWidth="200px" MinHeight="100" Margin="50 0" Orientation="Vertical">
+                        <TextBox Text="Type of Fuel" TextAlignment="Center"/>
+
+                        <ComboBox  x:Name="FuelsTypeFilter" HorizontalContentAlignment="Center" SelectionChanged="FuelsTypeFilter_SelectionChanged" >
+                            <ComboBoxItem  Content="All"></ComboBoxItem>
+                            <ComboBoxItem Content="Car's Fuel"></ComboBoxItem>
+                            <ComboBoxItem Content="Aviation's Fuel"></ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!--<StackPanel MinWidth="200px" MinHeight="100"  Margin="50 0" x:Name="FuelNameStackPanel" Orientation="Vertical">
+                        <TextBox Text="Name of Fuel" TextAlignment="Center"/>
+
+                        <ComboBox x:Name="FuelNameTypeFilter" HorizontalContentAlignment="Center" IsEnabled="False" 
+                              ItemsSource="{Binding Path=FuelTypeEntries}"
+                              DisplayMemberPath="Name"
+                              SelectedValuePath="Name"
+                              SelectedValue="{Binding Path=FuelTypeEntry}" />
+                    </StackPanel>-->
+
+                </StackPanel>
+            </Grid>
+
+            <Grid  Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" > 
+                <DataGrid x:Name="VehicleList" AutoGenerateColumns="False">
+
+                    <!--<DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGrid.CellStyle>-->
+
+                    <DataGrid.Columns>
+                       
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name, Mode=OneWay}" Width="1*"/>
+                        <DataGridTextColumn Header="Model" Binding="{Binding Model, Mode=OneWay}" Width="1*"/>
+                        <DataGridTextColumn Header="Price" Binding="{Binding Price, Mode=OneWay}" Width="1*"/>
+                        <DataGridTextColumn Header="Number of Seats" Binding="{Binding NumberOfSeats, Mode=OneWay}" Width="1*"/>
+                        <DataGridTemplateColumn >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button FontSize="15" Content="Get info" Click="Button_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button FontSize="15" Content="Delete" Click="DeleteRecord_Click"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
