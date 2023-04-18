@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "LT+ESk/zwt+J1TxyBYGR001vApMOtV81L4HuU/ZR/6GFVUrsGsw48F7Oyrh71XDJEbSmnuuJ6NeEh/XeUvrLqg==",
+  "success": true,
+  "projectFilePath": "E:\\Univer\\3 course\\2sem\\course_work\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Nyashuka\\.nuget\\packages\\materialdesigncolors\\2.1.2\\materialdesigncolors.2.1.2.nupkg.sha512",
+    "C:\\Users\\Nyashuka\\.nuget\\packages\\materialdesignthemes\\4.8.0\\materialdesignthemes.4.8.0.nupkg.sha512",
+    "C:\\Users\\Nyashuka\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+  ],
+  "logs": []
+}
