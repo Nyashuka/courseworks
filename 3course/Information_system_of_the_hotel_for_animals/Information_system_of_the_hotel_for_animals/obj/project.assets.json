@@ -50,6 +50,43 @@
         "frameworkReferences": [
           "Microsoft.WindowsDesktop.App.WPF"
         ]
+      },
+      "Stub.System.Data.SQLite.Core.NetStandard/1.0.117": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/System.Data.SQLite.dll": {
+            "related": ".dll.altconfig;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/System.Data.SQLite.dll": {
+            "related": ".dll.altconfig;.xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-x64/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/SQLite.Interop.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "System.Data.SQLite.Core/1.0.117": {
+        "type": "package",
+        "dependencies": {
+          "Stub.System.Data.SQLite.Core.NetStandard": "[1.0.117]"
+        }
       }
     }
   },
@@ -143,11 +180,44 @@
         "microsoft.xaml.behaviors.wpf.nuspec",
         "tools/Install.ps1"
       ]
+    },
+    "Stub.System.Data.SQLite.Core.NetStandard/1.0.117": {
+      "sha512": "x1zzPC/A4MmiKGDLoxLE6O5KLu7Kz7dyzhPQzlqYFTFcXmXAtM7hNNWpGw5yLEz833AnGbd/kxoitXArgR4YyA==",
+      "type": "package",
+      "path": "stub.system.data.sqlite.core.netstandard/1.0.117",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/System.Data.SQLite.dll",
+        "lib/netstandard2.0/System.Data.SQLite.dll.altconfig",
+        "lib/netstandard2.0/System.Data.SQLite.xml",
+        "lib/netstandard2.1/System.Data.SQLite.dll",
+        "lib/netstandard2.1/System.Data.SQLite.dll.altconfig",
+        "lib/netstandard2.1/System.Data.SQLite.xml",
+        "runtimes/linux-x64/native/SQLite.Interop.dll",
+        "runtimes/osx-x64/native/SQLite.Interop.dll",
+        "runtimes/win-x64/native/SQLite.Interop.dll",
+        "runtimes/win-x86/native/SQLite.Interop.dll",
+        "stub.system.data.sqlite.core.netstandard.1.0.117.nupkg.sha512",
+        "stub.system.data.sqlite.core.netstandard.nuspec"
+      ]
+    },
+    "System.Data.SQLite.Core/1.0.117": {
+      "sha512": "lGfOhA3QQod9XhdWYqLgNgbgq5uZnVG6DtnhDAdPisbLpTTgZBNbeGnp+GWt8C+3EyaqBYTGJWXcxHlHKwo05A==",
+      "type": "package",
+      "path": "system.data.sqlite.core/1.0.117",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "system.data.sqlite.core.1.0.117.nupkg.sha512",
+        "system.data.sqlite.core.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net5.0-windows7.0": [
-      "MaterialDesignThemes >= 4.8.0"
+      "MaterialDesignThemes >= 4.8.0",
+      "System.Data.SQLite.Core >= 1.0.117"
     ]
   },
   "packageFolders": {
@@ -157,11 +227,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Univer\\3 course\\2sem\\course_work\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals.csproj",
+      "projectUniqueName": "E:\\Univer\\courseworks\\3course\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals.csproj",
       "projectName": "Information_system_of_the_hotel_for_animals",
-      "projectPath": "E:\\Univer\\3 course\\2sem\\course_work\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals.csproj",
+      "projectPath": "E:\\Univer\\courseworks\\3course\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals.csproj",
       "packagesPath": "C:\\Users\\Nyashuka\\.nuget\\packages\\",
-      "outputPath": "E:\\Univer\\3 course\\2sem\\course_work\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals\\obj\\",
+      "outputPath": "E:\\Univer\\courseworks\\3course\\Information_system_of_the_hotel_for_animals\\Information_system_of_the_hotel_for_animals\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -198,6 +268,10 @@
           "MaterialDesignThemes": {
             "target": "Package",
             "version": "[4.8.0, )"
+          },
+          "System.Data.SQLite.Core": {
+            "target": "Package",
+            "version": "[1.0.117, )"
           }
         },
         "imports": [

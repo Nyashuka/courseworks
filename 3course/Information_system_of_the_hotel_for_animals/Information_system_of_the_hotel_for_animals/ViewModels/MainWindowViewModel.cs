@@ -1,4 +1,5 @@
-﻿using Information_system_of_the_hotel_for_animals.ViewModels.Base;
+﻿using Information_system_of_the_hotel_for_animals.Data;
+using Information_system_of_the_hotel_for_animals.ViewModels.Base;
 
 namespace Information_system_of_the_hotel_for_animals.ViewModels
 {
@@ -13,5 +14,10 @@ namespace Information_system_of_the_hotel_for_animals.ViewModels
             set => Set(ref _title, value);
         }
         #endregion
+
+        public MainWindowViewModel()
+        {
+            DatabaseService databaseService = new DatabaseService();
+        }
     }
 }

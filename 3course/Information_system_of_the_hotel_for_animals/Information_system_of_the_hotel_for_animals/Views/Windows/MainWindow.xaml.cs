@@ -18,7 +18,7 @@ namespace Information_system_of_the_hotel_for_animals.Views.Windows
 
         private void ButtonFullScreen_Click(object sender, RoutedEventArgs e)
         {
-            if (Application.Current.MainWindow.WindowState == WindowState.Normal)
+            if (Application.Current.MainWindow!.WindowState == WindowState.Normal)
                 Application.Current.MainWindow.WindowState = WindowState.Maximized;
             else
                 Application.Current.MainWindow.WindowState = WindowState.Normal;
@@ -26,7 +26,7 @@ namespace Information_system_of_the_hotel_for_animals.Views.Windows
 
         private void ButtonMinimized_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.WindowState = WindowState.Minimized;
+            Application.Current.MainWindow!.WindowState = WindowState.Minimized;
         }
         
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
