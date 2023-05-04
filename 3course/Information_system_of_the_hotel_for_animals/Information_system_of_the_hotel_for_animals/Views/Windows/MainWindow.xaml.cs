@@ -9,8 +9,6 @@ namespace Information_system.Views.Windows
         public MainWindow()
         {
             InitializeComponent();
-
-            DataContext = this;
         }
 
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)

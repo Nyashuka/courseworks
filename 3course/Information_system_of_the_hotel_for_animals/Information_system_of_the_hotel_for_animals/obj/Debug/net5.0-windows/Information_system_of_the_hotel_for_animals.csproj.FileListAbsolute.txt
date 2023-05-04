@@ -83,3 +83,13 @@ E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Inform
 E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\bin\Debug\net5.0-windows\runtimes\win-x86\native\SQLite.Interop.dll
 E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\ListOfBookings.g.cs
 E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\ListOfBookings.baml
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\Employees.g.cs
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\Rooms.g.cs
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\Services.g.cs
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\TypesOfRooms.g.cs
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\TypesOfServices.g.cs
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\Employees.baml
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\Rooms.baml
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\Services.baml
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\TypesOfRooms.baml
+E:\Univer\courseworks\3course\Information_system_of_the_hotel_for_animals\Information_system_of_the_hotel_for_animals\obj\Debug\net5.0-windows\Views\UserControls\TypesOfServices.baml

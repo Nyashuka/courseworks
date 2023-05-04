@@ -1,22 +1,16 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using Information_system_of_the_hotel_for_animals.Views.UserControls.Base;
+using Information_system.ViewModels.Base;
 
 namespace Information_system.Views.UserControls
 {
-    public partial class ListOfBookings : UserControl
+    public partial class ListOfBookings
     {
-        public ListOfBookings()
+        public ListOfBookings(ViewModel dataContext) 
         {
             InitializeComponent();
-        }
-
-        private void AddRecordButton_Clicked(object sender, RoutedEventArgs e)
-        {
-            CreatingGrid.Visibility = Visibility.Visible;
-            CreatingGrid.IsEnabled = true;
-
-            DataTableGrid.Visibility = Visibility.Collapsed;
-            DataTableGrid.IsEnabled = false;
+            DataContext = dataContext;
         }
     }
 }

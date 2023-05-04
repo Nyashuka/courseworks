@@ -49,7 +49,7 @@
                 <StackPanel VerticalAlignment="Top">
                     <Grid Margin="5">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <TextBlock Text="Hotel for animals" VerticalAlignment="Center" FontSize="20"
+                            <TextBlock Text="{Binding Title}" VerticalAlignment="Center" FontSize="20"
                                        FontFamily="Champagne &amp; Limousines" FontWeight="Bold" Foreground="#f2f3f5" />
                             <materialDesign:PackIcon Kind="Cat" Width="30px" Height="30px" Foreground="#f2f3f5" />
                         </StackPanel>
@@ -75,21 +75,24 @@
 
         <Grid Grid.Row="1">
             <TabControl>
-                <TabItem FontWeight="Bold" HorizontalAlignment="Center" Header="Booking"
+                 <TabItem FontWeight="Bold" HorizontalAlignment="Center" Header="Booking"
                          Style="{DynamicResource ColoredTabsStyle}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="195" MinWidth="195" MaxWidth="195" />
                             <ColumnDefinition Width="5*" />
                         </Grid.ColumnDefinitions>
                         <GridSplitter Width="3" VerticalAlignment="Stretch" Panel.ZIndex="1000"/>
                         <Grid Background="#2b2d31" Grid.Column="0">
                             <StackPanel Orientation="Vertical">
-                                <Button Height="60" Margin="10" Command="{Binding LoadBookings}">
+                                <Button Height="60" Margin="10 10 10 10" 
+                                        Command="{Binding LoadBookings}"
+                                        HorizontalContentAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Foreground="#ffffff" Kind="Notebook" Height="25"
-                                                                 Width="25" Margin="10" />
-                                        <TextBlock Text="Book a room" Foreground="#ffffff" VerticalAlignment="Center"
+                                                                 Width="25" Margin="0 10" />
+                                        <TextBlock Text="Bookings" Foreground="#ffffff"
+                                                   VerticalAlignment="Center"
                                                    Margin="5 10" />
                                     </StackPanel>
                                 </Button>
@@ -114,36 +117,25 @@
                         </Grid>
 
                         <Grid Grid.Column="1" Background="#313338">
-                            <ContentControl Content="{Binding CurrentContent}" />
-                            <!-- <uc:ListOfBookings></uc:ListOfBookings> -->
-                            <!--<Grid>
-                               <Grid.RowDefinitions>
-                                   <RowDefinition Height="30px"/>
-                                   <RowDefinition/>
-                               </Grid.RowDefinitions>
-                               
-                               <Button Grid.Row="0" Content="Add record"/>
-                               
-                               <DataGridRow Grid.Row="1">
-                                   
-                               </DataGridRow>
-                           </Grid>-->
+                            <ContentControl Content="{Binding CurrentContentInBooking}"/>
                         </Grid>
 
                     </Grid>
                 </TabItem>
-
+                
                 <TabItem FontWeight="Bold" HorizontalAlignment="Center" Header="Admin Panel"
                          Style="{DynamicResource ColoredTabsStyle}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="195" MinWidth="195" MaxWidth="195"/>
                             <ColumnDefinition Width="5*" />
                         </Grid.ColumnDefinitions>
-                        <GridSplitter Width="3" VerticalAlignment="Stretch" Panel.ZIndex="1000"></GridSplitter>
-                        <Grid Background="#2b2d31" Grid.Column="0">
-                            <StackPanel Orientation="Vertical">
-                                <Button Height="60" Margin="10" Command="{Binding LoadBookings}">
+                        <GridSplitter Width="3" VerticalAlignment="Stretch" Panel.ZIndex="1000" />
+                        <Grid Background="#2b2d31" Grid.Column="0" >
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                <Button Height="60" Margin="10 10 10 10" 
+                                        Command="{Binding LoadTypesOfRooms}"
+                                        HorizontalContentAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Foreground="#ffffff" Kind="House" Height="25"
                                                                  Width="25" Margin="0 10" />
@@ -152,69 +144,57 @@
                                                    Margin="5 10" />
                                     </StackPanel>
                                 </Button>
+                                <Button Height="60" Margin="10 0 10 10" 
+                                        Command="{Binding LoadTypesOfServices}" HorizontalContentAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Foreground="#ffffff" Kind="ServiceToolbox" Height="25"
+                                                                 Width="25" Margin="0 10" />
+                                        <TextBlock Text="Types of services" Foreground="#ffffff"
+                                                   VerticalAlignment="Center" Margin="5 10" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Height="60" Margin="10 0 10 10" 
+                                        Command="{Binding LoadRooms}" 
+                                        HorizontalContentAlignment="Left" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Foreground="#ffffff" Kind="Number2Box" Height="25"
+                                                                 Width="25" Margin="0 10" />
+                                        <TextBlock Text="Rooms" Foreground="#ffffff" VerticalAlignment="Center"
+                                                   Margin="5 10" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Height="60" Margin="10 0 10 10" 
+                                        Command="{Binding LoadEmployees}" 
+                                        HorizontalContentAlignment="Left" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Foreground="#ffffff" Kind="Worker" Height="25"
+                                                                 Width="25" Margin="0 10" />
+                                        <TextBlock Text="Employees" Foreground="#ffffff" VerticalAlignment="Center"
+                                                   Margin="5 10" />
+                                    </StackPanel>
+                                </Button>
+                                <Button Height="60" Margin="10 0 10 10" 
+                                        Command="{Binding LoadServices}" 
+                                        HorizontalContentAlignment="Left" >
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Foreground="#ffffff" Kind="LanguageTypescript"
+                                                                 Height="25"
+                                                                 Width="25" Margin="0 10" />
+                                        <TextBlock Text="Services" Foreground="#ffffff" VerticalAlignment="Center"
+                                                   Margin="5 10" />
+                                    </StackPanel>
+                                </Button>
                             </StackPanel>
-                            <!-- <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled"  -->
-                            <!--           FontFamily="Champagne &amp; Limousines" FontSize="15"> -->
-                            <!-- -->
-                            <!--     <ListViewItem Height="60" > -->
-                            <!--         <StackPanel Orientation="Horizontal"> -->
-                            <!--             <materialDesign:PackIcon Foreground="#ffffff" Kind="House" Height="25" -->
-                            <!--                                      Width="25" Margin="10" /> -->
-                            <!--             <TextBlock Text="Types of rooms" Foreground="#ffffff" -->
-                            <!--                        VerticalAlignment="Center" -->
-                            <!--                        Margin="5 10" /> -->
-                            <!--         </StackPanel> -->
-                            <!--     </ListViewItem> -->
-                            <!--     <ListViewItem Height="60"> -->
-                            <!--         <StackPanel Orientation="Horizontal"> -->
-                            <!--             <materialDesign:PackIcon Foreground="#ffffff" Kind="ServiceToolbox" Height="25" -->
-                            <!--                                      Width="25" Margin="10" /> -->
-                            <!--             <TextBlock Text="Types of services" Foreground="#ffffff" -->
-                            <!--                        VerticalAlignment="Center" Margin="5 10" /> -->
-                            <!--         </StackPanel> -->
-                            <!--     </ListViewItem> -->
-                            <!--     <ListViewItem Height="60"> -->
-                            <!--         <StackPanel Orientation="Horizontal"> -->
-                            <!--             <materialDesign:PackIcon Foreground="#ffffff" Kind="Number2Box" Height="25" -->
-                            <!--                                      Width="25" Margin="10" /> -->
-                            <!--             <TextBlock Text="Rooms" Foreground="#ffffff" VerticalAlignment="Center" -->
-                            <!--                        Margin="5 10" /> -->
-                            <!--         </StackPanel> -->
-                            <!--     </ListViewItem> -->
-                            <!--     <ListViewItem Height="60"> -->
-                            <!--         <StackPanel Orientation="Horizontal"> -->
-                            <!--             <materialDesign:PackIcon Foreground="#ffffff" Kind="Worker" Height="25" -->
-                            <!--                                      Width="25" Margin="10" /> -->
-                            <!--             <TextBlock Text="Employees" Foreground="#ffffff" VerticalAlignment="Center" -->
-                            <!--                        Margin="5 10" /> -->
-                            <!--         </StackPanel> -->
-                            <!--     </ListViewItem> -->
-                            <!--     <ListViewItem Height="60"> -->
-                            <!--         <StackPanel Orientation="Horizontal"> -->
-                            <!--             <materialDesign:PackIcon Foreground="#ffffff" Kind="LanguageTypescript" -->
-                            <!--                                      Height="25" -->
-                            <!--                                      Width="25" Margin="10" /> -->
-                            <!--             <TextBlock Text="Services" Foreground="#ffffff" VerticalAlignment="Center" -->
-                            <!--                        Margin="5 10" /> -->
-                            <!--         </StackPanel> -->
-                            <!--     </ListViewItem> -->
-                            <!-- </ListView> -->
-
                         </Grid>
 
                         <Grid Grid.Column="1" Background="#313338">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30px" />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-
-
-                            </Grid>
+                            <ContentControl Content="{Binding CurrentContentInAdminPanel}"/>
                         </Grid>
-
                     </Grid>
                 </TabItem>
+               
+
+               
             </TabControl>
 
 
