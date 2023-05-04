@@ -1,8 +1,7 @@
 ﻿using System.Data.SQLite;
 using System.IO;
-using System.Text;
 
-namespace Information_system_of_the_hotel_for_animals.Data
+namespace Information_system.Infrastructure
 {
     public class DatabaseInitializer
     {

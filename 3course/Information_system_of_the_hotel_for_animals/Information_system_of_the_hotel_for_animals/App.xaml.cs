@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Information_system_of_the_hotel_for_animals
+namespace Information_system
 {
     public partial class App : Application
     {

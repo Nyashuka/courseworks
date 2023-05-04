@@ -1,7 +1,7 @@
 ﻿using System;
-using Information_system_of_the_hotel_for_animals.Infrastucture.Commands.Base;
+using Information_system.Infrastucture.Commands.Base;
 
-namespace Information_system_of_the_hotel_for_animals.Infrastucture.Commands
+namespace Information_system.Infrastructure.Commands
 {
     public class LambdaCommand : Command
     {

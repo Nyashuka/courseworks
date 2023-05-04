@@ -1,7 +1,7 @@
-﻿<Application x:Class="Information_system_of_the_hotel_for_animals.App"
+﻿<Application x:Class="Information_system.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Information_system_of_the_hotel_for_animals"
+             xmlns:local="clr-namespace:Information_system"
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

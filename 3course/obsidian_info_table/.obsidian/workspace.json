@@ -15,14 +15,30 @@
               "state": {
                 "file": "Info_tables.canvas",
                 "viewState": {
-                  "x": 490.392776711471,
-                  "y": 253.35185932923213,
+                  "x": 822.8166197948274,
+                  "y": -367.0640501956456,
                   "zoom": -0.5542729990765372
                 }
               }
             }
+          },
+          {
+            "id": "8d5898e73f93fbc1",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Info_tables.canvas",
+                "viewState": {
+                  "x": 638.5531906771113,
+                  "y": -384.1445394661158,
+                  "zoom": -0.5806117151390209
+                }
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -65,6 +81,14 @@
             "type": "leaf",
             "state": {
               "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "0e907591ddf05c7f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
               "state": {}
             }
           }
@@ -149,7 +173,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a6e172ae1b35a9b5",
+  "active": "537c9dfa0aca65fa",
   "lastOpenFiles": [
     "Topic.md",
     "Info_tables.canvas",

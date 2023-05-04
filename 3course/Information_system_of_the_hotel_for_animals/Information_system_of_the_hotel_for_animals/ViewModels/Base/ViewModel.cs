@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Information_system_of_the_hotel_for_animals.ViewModels.Base
+namespace Information_system.ViewModels.Base
 {
     public class ViewModel : INotifyPropertyChanged
     {

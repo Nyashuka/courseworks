@@ -1,7 +1,11 @@
-﻿using Information_system_of_the_hotel_for_animals.Data;
-using Information_system_of_the_hotel_for_animals.ViewModels.Base;
+﻿using System.Windows.Controls;
+using System.Windows.Input;
+using Information_system.Infrastructure;
+using Information_system.Infrastructure.Commands;
+using Information_system.ViewModels.Base;
+using Information_system.Views.UserControls;
 
-namespace Information_system_of_the_hotel_for_animals.ViewModels
+namespace Information_system.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {
@@ -14,10 +18,30 @@ namespace Information_system_of_the_hotel_for_animals.ViewModels
             set => Set(ref _title, value);
         }
         #endregion
+        
+        private UserControl _currentContent = new ListOfBookings();
+        public UserControl CurrentContent
+        {
+            get => _currentContent;
+            set => Set(ref _currentContent, value);
+        }
 
+        #region COMMANDS
+        
+        public ICommand LoadBookings { get; }
+
+        private bool CanLoadBookingsCommandExecute(object p) => true;
+        private void OnLoadBookingsCommandExecute(object p)
+        {
+            CurrentContent = new ListOfBookings();
+        }
+
+        #endregion
+        
         public MainWindowViewModel()
         {
-            DatabaseService databaseService = new DatabaseService();
+            LoadBookings = new LambdaCommand(OnLoadBookingsCommandExecute, CanLoadBookingsCommandExecute);
+            //CurrentContent = new ListOfBookings();
         }
     }
 }

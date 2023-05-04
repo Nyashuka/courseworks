@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Information_system_of_the_hotel_for_animals.Infrastucture.Commands.Base
+namespace Information_system.Infrastucture.Commands.Base
 {
     public abstract class Command : ICommand
     {

@@ -1,16 +1,28 @@
 ﻿using System.Data.SQLite;
 using System.IO;
 
-namespace Information_system_of_the_hotel_for_animals.Data
+namespace Information_system.Infrastructure
 {
-    public class DatabaseService
+    public class MyDatabaseService
     {
         private const string DatabasePath = "database/database.db";
         private const string ConnectionString = "Data Source=" + DatabasePath;
 
-        private readonly SQLiteConnection _connection;
+        private SQLiteConnection _connection;
 
-        public DatabaseService()
+        private static MyDatabaseService _instance;
+        public static MyDatabaseService Instance
+        {
+            get
+            {
+                if(_instance == null)
+                    _instance = new MyDatabaseService();
+                    
+                return _instance;
+            }
+        }
+
+        public MyDatabaseService()
         {
             bool dataBaseExist = File.Exists(DatabasePath);
 
@@ -21,7 +33,7 @@ namespace Information_system_of_the_hotel_for_animals.Data
 
             _connection = new SQLiteConnection(ConnectionString);
 
-            if(!dataBaseExist)
+            if (!dataBaseExist)
             {
                 _connection.Open();
                 DatabaseInitializer databaseInitializer = new DatabaseInitializer(_connection);
@@ -29,6 +41,5 @@ namespace Information_system_of_the_hotel_for_animals.Data
                 _connection.Close();
             }
         }
-      
     }
 }
