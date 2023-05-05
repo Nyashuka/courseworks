@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:Information_system.ViewModels"
         xmlns:uc="clr-namespace:Information_system.Views.UserControls"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="" MinHeight="450" MinWidth="850" Height="450" Width="850" Background="Black" WindowStyle="None">
@@ -75,17 +76,17 @@
 
         <Grid Grid.Row="1">
             <TabControl>
-                 <TabItem FontWeight="Bold" HorizontalAlignment="Center" Header="Booking"
+                <TabItem FontWeight="Bold" HorizontalAlignment="Center" Header="Booking"
                          Style="{DynamicResource ColoredTabsStyle}">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="195" MinWidth="195" MaxWidth="195" />
                             <ColumnDefinition Width="5*" />
                         </Grid.ColumnDefinitions>
-                        <GridSplitter Width="3" VerticalAlignment="Stretch" Panel.ZIndex="1000"/>
+                        <GridSplitter Width="3" VerticalAlignment="Stretch" Panel.ZIndex="1000" />
                         <Grid Background="#2b2d31" Grid.Column="0">
                             <StackPanel Orientation="Vertical">
-                                <Button Height="60" Margin="10 10 10 10" 
+                                <Button Height="60" Margin="10 10 10 10"
                                         Command="{Binding LoadBookings}"
                                         HorizontalContentAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
@@ -97,7 +98,7 @@
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-                            
+
                             <!-- <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" -->
                             <!--           FontFamily="Champagne &amp; Limousines" FontSize="15"> -->
                             <!-- -->
@@ -117,23 +118,23 @@
                         </Grid>
 
                         <Grid Grid.Column="1" Background="#313338">
-                            <ContentControl Content="{Binding CurrentContentInBooking}"/>
+                            <ContentControl Content="{Binding CurrentContentInBooking}" />
                         </Grid>
 
                     </Grid>
                 </TabItem>
-                
+
                 <TabItem FontWeight="Bold" HorizontalAlignment="Center" Header="Admin Panel"
                          Style="{DynamicResource ColoredTabsStyle}">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="195" MinWidth="195" MaxWidth="195"/>
+                            <ColumnDefinition Width="195" MinWidth="195" MaxWidth="195" />
                             <ColumnDefinition Width="5*" />
                         </Grid.ColumnDefinitions>
                         <GridSplitter Width="3" VerticalAlignment="Stretch" Panel.ZIndex="1000" />
-                        <Grid Background="#2b2d31" Grid.Column="0" >
+                        <Grid Background="#2b2d31" Grid.Column="0">
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
-                                <Button Height="60" Margin="10 10 10 10" 
+                                <Button Height="60" Margin="10 10 10 10"
                                         Command="{Binding LoadTypesOfRooms}"
                                         HorizontalContentAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
@@ -144,7 +145,7 @@
                                                    Margin="5 10" />
                                     </StackPanel>
                                 </Button>
-                                <Button Height="60" Margin="10 0 10 10" 
+                                <Button Height="60" Margin="10 0 10 10"
                                         Command="{Binding LoadTypesOfServices}" HorizontalContentAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Foreground="#ffffff" Kind="ServiceToolbox" Height="25"
@@ -153,9 +154,9 @@
                                                    VerticalAlignment="Center" Margin="5 10" />
                                     </StackPanel>
                                 </Button>
-                                <Button Height="60" Margin="10 0 10 10" 
-                                        Command="{Binding LoadRooms}" 
-                                        HorizontalContentAlignment="Left" >
+                                <Button Height="60" Margin="10 0 10 10"
+                                        Command="{Binding LoadRooms}"
+                                        HorizontalContentAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Foreground="#ffffff" Kind="Number2Box" Height="25"
                                                                  Width="25" Margin="0 10" />
@@ -163,9 +164,9 @@
                                                    Margin="5 10" />
                                     </StackPanel>
                                 </Button>
-                                <Button Height="60" Margin="10 0 10 10" 
-                                        Command="{Binding LoadEmployees}" 
-                                        HorizontalContentAlignment="Left" >
+                                <Button Height="60" Margin="10 0 10 10"
+                                        Command="{Binding LoadEmployees}"
+                                        HorizontalContentAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Foreground="#ffffff" Kind="Worker" Height="25"
                                                                  Width="25" Margin="0 10" />
@@ -173,9 +174,9 @@
                                                    Margin="5 10" />
                                     </StackPanel>
                                 </Button>
-                                <Button Height="60" Margin="10 0 10 10" 
-                                        Command="{Binding LoadServices}" 
-                                        HorizontalContentAlignment="Left" >
+                                <Button Height="60" Margin="10 0 10 10"
+                                        Command="{Binding LoadServices}"
+                                        HorizontalContentAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Foreground="#ffffff" Kind="LanguageTypescript"
                                                                  Height="25"
@@ -189,12 +190,12 @@
 
                         <Grid Grid.Column="1" Background="#313338">
                             <ContentControl Content="{Binding CurrentContentInAdminPanel}"/>
+                           
                         </Grid>
                     </Grid>
                 </TabItem>
-               
 
-               
+
             </TabControl>
 
 

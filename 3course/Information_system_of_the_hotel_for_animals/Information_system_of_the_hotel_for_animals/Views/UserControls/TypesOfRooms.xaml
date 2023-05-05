@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:local="clr-namespace:Information_system_of_the_hotel_for_animals.Views.UserControls"
              mc:Ignorable="d"
              xmlns:vm="clr-namespace:Information_system.ViewModels"
@@ -62,7 +63,14 @@
                 
             </Grid>
             
-            <Button Width="80px" Content="Add" Grid.Row="1"/>
+            <Button Width="80px" Content="Add" Grid.Row="1">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding CreateTypeOfRoom}" />
+                        <i:InvokeCommandAction Command="{Binding EnterViewDataStateCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </Grid>
 
         <Grid Visibility="{Binding EditDataVisibility}">
