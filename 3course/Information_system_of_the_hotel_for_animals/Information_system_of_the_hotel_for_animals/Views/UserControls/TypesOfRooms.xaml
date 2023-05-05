@@ -8,7 +8,7 @@
              xmlns:vm="clr-namespace:Information_system.ViewModels"
              d:DataContext="{d:DesignInstance vm:TypesOfRoomsViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="#1e1f22" >
         <Grid Visibility="{Binding ViewDataVisibility}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30px" />
@@ -21,23 +21,52 @@
                       ItemsSource="{Binding TypesOfRoomsList}"
                       ScrollViewer.CanContentScroll="True"
                       VerticalScrollBarVisibility="Visible"
-                      HorizontalScrollBarVisibility="Visible"
-            >
+                      HorizontalScrollBarVisibility="Visible">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
-                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Title of room type" Binding="{Binding TitleOfType}" />
-                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Area of room" Binding="{Binding AreaOfRoom}" />
-                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Price per day" Binding="{Binding PricePerDay}" />
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Title of room type"
+                                        Binding="{Binding TitleOfType}" />
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Area of room"
+                                        Binding="{Binding AreaOfRoom}" />
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Price per day"
+                                        Binding="{Binding PricePerDay}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        
-        <Grid Visibility="{Binding CreatingDataVisibility}">
+
+        <Grid Visibility="{Binding CreatingDataVisibility}" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="20 20">
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Title of room" TextAlignment="Left"/>
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Area of room"  TextAlignment="Left"/>
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Price per day" TextAlignment="Left"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20">
+                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
+                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
+                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
+                </StackPanel>
+                
+                
+            </Grid>
             
+            <Button Width="80px" Content="Add" Grid.Row="1"/>
         </Grid>
+
         <Grid Visibility="{Binding EditDataVisibility}">
-            
+
         </Grid>
     </Grid>
 </UserControl>

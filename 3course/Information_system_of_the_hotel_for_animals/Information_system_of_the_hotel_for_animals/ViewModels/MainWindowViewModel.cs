@@ -42,6 +42,13 @@ namespace Information_system.ViewModels
             get => _currentViewModelInBooking;
             set => Set(ref _currentViewModelInBooking, value);
         }
+        
+        private ViewModel _currentViewModelInAdminPanel;
+        public ViewModel CurrentViewModelInAdminPanel
+        {
+            get => _currentViewModelInAdminPanel;
+            set => Set(ref _currentViewModelInAdminPanel, value);
+        }
 
         #region COMMANDS
         public ICommand LoadBookings { get; }
@@ -56,35 +63,41 @@ namespace Information_system.ViewModels
         private bool CanLoadEmployeesCommandExecute(object p) => true;
         private void OnLoadEmployeesCommandExecute(object p)
         {
-            CurrentContentInAdminPanel = new Employees();
+            CurrentViewModelInAdminPanel = new EmployeesViewModel();
+            CurrentContentInAdminPanel = new Employees(CurrentViewModelInAdminPanel);
         }
         
         public ICommand LoadRooms { get; }
         private bool CanLoadRoomsCommandExecute(object p) => true;
         private void OnLoadRoomsCommandExecute(object p)
         {
-            CurrentContentInAdminPanel = new Rooms();
+            CurrentViewModelInAdminPanel = new RoomsViewModel();
+            CurrentContentInAdminPanel = new Rooms(CurrentViewModelInAdminPanel);
         }
         
         public ICommand LoadServices { get; }
         private bool CanLoadServicesCommandExecute(object p) => true;
         private void OnLoadServicesCommandExecute(object p)
         {
-            CurrentContentInAdminPanel = new Services();
+            CurrentViewModelInAdminPanel = new ServicesViewModel();
+            CurrentContentInAdminPanel = new Services(CurrentViewModelInAdminPanel);
         }
         
         public ICommand LoadTypesOfRooms { get; }
         private bool CanLoadTypesOfRoomsCommandExecute(object p) => true;
         private void OnLoadTypesOfRoomsCommandExecute(object p)
         {
-            CurrentContentInAdminPanel = new TypesOfRooms();
+            CurrentViewModelInAdminPanel = new RoomsViewModel();
+            CurrentContentInAdminPanel = new TypesOfRooms(CurrentViewModelInAdminPanel);
+            
         }
         
         public ICommand LoadTypesOfServices { get; }
         private bool CanLoadTypesOfServicesCommandExecute(object p) => true;
         private void OnLoadTypesOfServicesCommandExecute(object p)
         {
-            CurrentContentInAdminPanel = new TypesOfServices();
+            CurrentViewModelInAdminPanel = new TypesOfServicesViewModel();
+            CurrentContentInAdminPanel = new TypesOfServices(CurrentViewModelInAdminPanel);
         }
         #endregion
         
@@ -96,7 +109,6 @@ namespace Information_system.ViewModels
             LoadServices = new LambdaCommand(OnLoadServicesCommandExecute, CanLoadServicesCommandExecute);
             LoadTypesOfRooms = new LambdaCommand(OnLoadTypesOfRoomsCommandExecute, CanLoadTypesOfRoomsCommandExecute);
             LoadTypesOfServices = new LambdaCommand(OnLoadTypesOfServicesCommandExecute, CanLoadTypesOfServicesCommandExecute);
-            //CurrentContentInAdminPanel = new;
         }
     }
 }
