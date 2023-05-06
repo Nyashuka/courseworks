@@ -98,23 +98,7 @@
                                     </StackPanel>
                                 </Button>
                             </StackPanel>
-
-                            <!-- <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" -->
-                            <!--           FontFamily="Champagne &amp; Limousines" FontSize="15"> -->
-                            <!-- -->
-                            <!--     <ListViewItem Height="60" > -->
-                            <!--         <Button Height="60"> -->
-                            <!--             <StackPanel Orientation="Horizontal"> -->
-                            <!--                 <materialDesign:PackIcon Foreground="#ffffff" Kind="Notebook" Height="25" -->
-                            <!--                                          Width="25" Margin="10" /> -->
-                            <!--                 <TextBlock Text="Book a room" Foreground="#ffffff" VerticalAlignment="Center" -->
-                            <!--                            Margin="5 10" /> -->
-                            <!--             </StackPanel> -->
-                            <!--         </Button> -->
-                            <!--         -->
-                            <!--     </ListViewItem> -->
-                            <!-- -->
-                            <!-- </ListView> -->
+                            
                         </Grid>
 
                         <Grid Grid.Column="1" Background="#313338">

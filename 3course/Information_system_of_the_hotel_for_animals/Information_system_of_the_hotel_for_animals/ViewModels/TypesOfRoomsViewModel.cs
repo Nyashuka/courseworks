@@ -56,9 +56,7 @@ namespace Information_system.ViewModels
         protected override void OnDeleteRecordCommandExecute(object p)
         {
             TypeOfRoom obj = p as TypeOfRoom;
-
             _databaseService.DeleteTypeOfRoom(obj.Id);
-            
             TypesOfRoomsList = _databaseService.GetAllTypesOfRooms();
         }
 

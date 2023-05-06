@@ -29,42 +29,84 @@
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Title of service" Binding="{Binding TitleOfService}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Price per day" Binding="{Binding PricePerDay}" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" 
+                                        Command="{Binding Path=DataContext.DeleteRecord, 
+                                                        RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                        CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
         
         <Grid Visibility="{Binding CreatingDataVisibility}" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                
+
 
                 <StackPanel Grid.Row="0" Grid.Column="0" Margin="20 20">
-                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Title of room" TextAlignment="Left"/>
-                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Area of room"  TextAlignment="Left"/>
-                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Price per day" TextAlignment="Left"/>
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Title of service" TextAlignment="Left" />
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Price per day" TextAlignment="Left" />
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Type of room" TextAlignment="Left" />
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Employee" TextAlignment="Left" />
                 </StackPanel>
-                
+
                 <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20">
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
+                    <TextBox Text="{Binding TitleOfService}"
+                             Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center" />
+                    <TextBox Text="{Binding PricePerDay}"
+                             Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center" />
+
+                    <ComboBox ItemsSource="{Binding Path=TypesOfServices}" Foreground="Beige" HorizontalContentAlignment="Center"
+                              DisplayMemberPath="TitleOfServiceType"
+                              SelectedValuePath="TitleOfServiceType"
+                              SelectedItem="{Binding Path=SelectedTypeOfService}">
+
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Background" Value="#1e1f22"/>
+                                <Setter Property="BorderBrush" Value="#1e1f22"/>
+                            </Style>
+                         
+                        </ComboBox.ItemContainerStyle>
+                        
+                    </ComboBox>
+                    <ComboBox ItemsSource="{Binding Path=Employees}" Foreground="Beige" HorizontalContentAlignment="Center"
+                              DisplayMemberPath="FullName"
+                              SelectedValuePath="FullName"
+                              SelectedItem="{Binding Path=SelectedEmployee}">
+
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Background" Value="#1e1f22"/>
+                                <Setter Property="BorderBrush" Value="#1e1f22"/>
+                            </Style>
+                         
+                        </ComboBox.ItemContainerStyle>
+                        
+                    </ComboBox>
+
                 </StackPanel>
-                
-                
+
+
             </Grid>
             
             <Button Width="80px" Content="Add" Grid.Row="1">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding CreateRecord}" />
-                        <i:InvokeCommandAction Command="{Binding EnterViewDataStateCommand}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>

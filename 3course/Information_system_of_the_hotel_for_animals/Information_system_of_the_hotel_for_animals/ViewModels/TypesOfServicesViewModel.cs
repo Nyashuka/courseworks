@@ -8,22 +8,54 @@ namespace Information_system.ViewModels
 {
     public class TypesOfServicesViewModel : UserControlViewModelBase
     {
-        public List<TypeOfService> TypesOfServicesList { get; }
-        
-        
-        public TypesOfServicesViewModel() : base()
+
+        #region View
+
+        private List<TypeOfService> _typeOfServicesList;
+
+        public List<TypeOfService> TypesOfServicesList
         {
-           
+            get => _typeOfServicesList;
+            set => Set(ref _typeOfServicesList, value);
         }
 
+        #endregion
+
+        #region Creating
+
+        private string _titleOfService;
+
+        public string TitleOfService
+        {
+            get => _titleOfService;
+            set => Set(ref _titleOfService, value);
+        }
+        
         protected override void OnCreateRecordCommandExecute(object p)
         {
-            throw new System.NotImplementedException();
+            _databaseService.CreateTypeOfService(TitleOfService);
+            TypesOfServicesList = _databaseService.GetAllTypesOfServices();
+            EnterViewDataStateCommand.Execute(p);
         }
+
+        #endregion
+
+        #region Deleting
 
         protected override void OnDeleteRecordCommandExecute(object p)
         {
-            throw new System.NotImplementedException();
+            TypeOfService obj = p as TypeOfService;
+
+            _databaseService.DeleteTypeOfService(obj.Id);
+            
+            TypesOfServicesList = _databaseService.GetAllTypesOfServices();
+        }
+
+        #endregion
+
+        public TypesOfServicesViewModel() : base()
+        {
+            TypesOfServicesList = _databaseService.GetAllTypesOfServices();
         }
     }
 }

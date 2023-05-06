@@ -29,6 +29,17 @@
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Full name" Binding="{Binding FullName}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Phone number" Binding="{Binding PhoneNumber}" />
+                    
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" 
+                                        Command="{Binding Path=DataContext.DeleteRecord, 
+                                                        RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                        CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -51,8 +62,10 @@
                 </StackPanel>
                 
                 <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20">
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>     
+                    <TextBox Text="{Binding FullName}"
+                        Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
+                    <TextBox Text="{Binding PhoneNumber}"
+                             Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>     
                 </StackPanel>
                 
                 
@@ -62,7 +75,6 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding CreateRecord}" />
-                        <i:InvokeCommandAction Command="{Binding EnterViewDataStateCommand}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>

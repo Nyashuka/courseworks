@@ -26,6 +26,17 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Title of service type" Binding="{Binding TitleOfServiceType}" />
+                    
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" 
+                                        Command="{Binding Path=DataContext.DeleteRecord, 
+                                                        RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                        CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -44,23 +55,20 @@
                 
 
                 <StackPanel Grid.Row="0" Grid.Column="0" Margin="20 20">
-                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Title of room" TextAlignment="Left"/>
-                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Area of room"  TextAlignment="Left"/>
-                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Price per day" TextAlignment="Left"/>
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Title of service" TextAlignment="Left"/>
                 </StackPanel>
                 
                 <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20">
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
+                    <TextBox Text="{Binding TitleOfService}"
+                             Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
                 </StackPanel>
+     
             </Grid>
             
             <Button Width="80px" Content="Add" Grid.Row="1">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
                         <i:InvokeCommandAction Command="{Binding CreateRecord}" />
-                        <i:InvokeCommandAction Command="{Binding EnterViewDataStateCommand}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>

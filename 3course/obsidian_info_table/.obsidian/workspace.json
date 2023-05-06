@@ -30,9 +30,9 @@
               "state": {
                 "file": "Info_tables.canvas",
                 "viewState": {
-                  "x": 571.2685136629755,
-                  "y": 85.37546529860214,
-                  "zoom": -1.2472783818056874
+                  "x": 500.7678086622835,
+                  "y": 342.46603931110934,
+                  "zoom": -0.5806117151390209
                 }
               }
             }
@@ -173,7 +173,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "537c9dfa0aca65fa",
+  "active": "8d5898e73f93fbc1",
   "lastOpenFiles": [
     "Topic.md",
     "Info_tables.canvas",
