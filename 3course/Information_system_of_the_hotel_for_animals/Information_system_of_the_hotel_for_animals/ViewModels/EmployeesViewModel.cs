@@ -12,5 +12,14 @@ namespace Information_system.ViewModels
         }
 
         public List<Employee> EmployeeList { get; }
+        protected override void OnCreateRecordCommandExecute(object p)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void OnDeleteRecordCommandExecute(object p)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

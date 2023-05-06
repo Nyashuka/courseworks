@@ -8,7 +8,7 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="" MinHeight="450" MinWidth="850" Height="450" Width="850" Background="Black" WindowStyle="None">
+        Title="{Binding Title}" MinHeight="450" MinWidth="850" Height="450" Width="850" Background="Black" WindowStyle="None">
 
     <Window.DataContext>
         <vm:MainWindowViewModel />

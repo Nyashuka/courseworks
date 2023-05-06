@@ -87,7 +87,7 @@ namespace Information_system.ViewModels
         private bool CanLoadTypesOfRoomsCommandExecute(object p) => true;
         private void OnLoadTypesOfRoomsCommandExecute(object p)
         {
-            CurrentViewModelInAdminPanel = new RoomsViewModel();
+            CurrentViewModelInAdminPanel = new TypesOfRoomsViewModel();
             CurrentContentInAdminPanel = new TypesOfRooms(CurrentViewModelInAdminPanel);
             
         }

@@ -22,9 +22,9 @@
                       ItemsSource="{Binding TypesOfRoomsList}"
                       ScrollViewer.CanContentScroll="True"
                       VerticalScrollBarVisibility="Visible"
-                      HorizontalScrollBarVisibility="Visible">
+                      HorizontalScrollBarVisibility="Visible" >
 
-                <DataGrid.Columns>
+                <DataGrid.Columns >
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Title of room type"
                                         Binding="{Binding TitleOfType}" />
@@ -32,6 +32,17 @@
                                         Binding="{Binding AreaOfRoom}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Price per day"
                                         Binding="{Binding PricePerDay}" />
+                    
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" 
+                                        Command="{Binding Path=DataContext.DeleteRecord, 
+                                                        RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                        CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -55,19 +66,20 @@
                 </StackPanel>
                 
                 <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20">
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
-                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
+                    <TextBox Text="{Binding TitleOfRoom}"
+                        Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
+                    <TextBox Text="{Binding AreaOfRoom}" 
+                             Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
+                    <TextBox Text="{Binding PricePerDay}" 
+                             Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center"/>    
                 </StackPanel>
-                
-                
+     
             </Grid>
             
             <Button Width="80px" Content="Add" Grid.Row="1">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding CreateTypeOfRoom}" />
-                        <i:InvokeCommandAction Command="{Binding EnterViewDataStateCommand}" />
+                        <i:InvokeCommandAction Command="{Binding CreateRecord}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>

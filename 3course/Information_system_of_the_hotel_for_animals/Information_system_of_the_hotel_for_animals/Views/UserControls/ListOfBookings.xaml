@@ -5,13 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d"
              xmlns:vm="clr-namespace:Information_system.ViewModels"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:cvt="clr-namespace:Information_system.Data"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DataContext="{d:DesignInstance vm:ListOfBookingViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <!-- <UserControl.Resources> -->
-    <!--     <cvt:VisibilityConverter x:Key="VisibilityConverter" /> -->
-    <!-- </UserControl.Resources> -->
+
     <Grid Background="#313338">
         <Grid Visibility="{Binding ViewDataVisibility}">
             <Grid.RowDefinitions>
@@ -25,24 +24,90 @@
                       ItemsSource="{Binding Bookings}"
                       ScrollViewer.CanContentScroll="True"
                       VerticalScrollBarVisibility="Visible"
-                      HorizontalScrollBarVisibility="Visible"
-                      >
+                      HorizontalScrollBarVisibility="Visible">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
-                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Price of booking" Binding="{Binding PriceOfBooking}" />
-                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Start Date" Binding="{Binding DateOfStart}" />
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Price of booking"
+                                        Binding="{Binding PriceOfBooking}" />
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Start Date"
+                                        Binding="{Binding DateOfStart}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="End Date" Binding="{Binding DateOfEnd}" />
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
 
-        <Grid Visibility="{Binding CreatingDataVisibility}" >
-            <TextBlock Width="300" Height="300" Text="{Binding Text}"/>
+        <Grid Visibility="{Binding CreatingDataVisibility}" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="20 20">
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Tenant full name" TextAlignment="Left" />
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Price of booking" TextAlignment="Left" />
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Date of start" TextAlignment="Left" />
+                    <TextBox Foreground="Beige" IsReadOnly="True" Text="Date of end" TextAlignment="Left" />
+
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20">
+                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center" />
+                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center" />
+                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center" />
+                    <TextBox Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center" />
+                </StackPanel>
+
+
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                
+                <TextBox Grid.Row="0" IsReadOnly="True" Foreground="Beige" Text="Services" TextAlignment="Center" />
+                
+                <DataGrid Grid.Row="1" AutoGenerateColumns="False" Width="300px"
+                          ItemsSource="{Binding Bookings}"
+                          ScrollViewer.CanContentScroll="True"
+                          VerticalScrollBarVisibility="Visible"
+                          HorizontalScrollBarVisibility="Visible">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
+                        <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Price of booking"
+                                            Binding="{Binding PriceOfBooking}" />
+                        <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Start Date"
+                                            Binding="{Binding DateOfStart}" />
+                        <DataGridTextColumn IsReadOnly="True" Width="1*" Header="End Date" Binding="{Binding DateOfEnd}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button Grid.Row="2" Margin="20" Content="Add Service" HorizontalAlignment="Right"></Button>
+            </Grid>
+
+            <Button Width="80px" Content="Create" Grid.Row="2">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding CreateRecord}" />
+                        <i:InvokeCommandAction Command="{Binding EnterViewDataStateCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </Grid>
-        
-        <Grid Visibility="{Binding EditDataVisibility}" >
-            <TextBlock Width="300" Height="300" Text="{Binding Text}"/>
+
+        <Grid Visibility="{Binding EditDataVisibility}">
+            <TextBlock Width="300" Height="300" Text="{Binding Text}" />
         </Grid>
     </Grid>
 </UserControl>

@@ -8,15 +8,9 @@ namespace Information_system.ViewModels
 {
     public class ListOfBookingViewModel : UserControlViewModelBase
     {
-        private string _text = "fdsnbghjsdvbhgsdvbhjgsd";
 
-        public string Text
-        {
-            get => _text;
-            set => Set(ref _text, value);
-        }
+        #region View
 
-        private MyDatabaseService _databaseService;
         private List<Booking> _bookings;
         
         public List<Booking> Bookings
@@ -24,12 +18,27 @@ namespace Information_system.ViewModels
             get => _bookings;
             set => Set(ref _bookings, value);
         }
+
+        #endregion
+
+        #region Creating
+        
+
+        #endregion
         
         public ListOfBookingViewModel() : base()
         {
-            _databaseService = MyDatabaseService.Instance;
-            
             _bookings = new List<Booking>();
+        }
+
+        protected override void OnCreateRecordCommandExecute(object p)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void OnDeleteRecordCommandExecute(object p)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
