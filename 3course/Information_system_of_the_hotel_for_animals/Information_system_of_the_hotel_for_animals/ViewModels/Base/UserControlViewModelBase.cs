@@ -52,6 +52,8 @@ namespace Information_system.ViewModels.Base
             CreatingDataVisibility = Visibility.Collapsed;
             ViewDataVisibility = Visibility.Visible;
             EditDataVisibility = Visibility.Collapsed;
+            
+            UpdateData();
         }
 
         public ICommand EnterCreatingDataStateCommand { get; }
@@ -63,6 +65,8 @@ namespace Information_system.ViewModels.Base
             CreatingDataVisibility = Visibility.Visible;
             ViewDataVisibility = Visibility.Collapsed;
             EditDataVisibility = Visibility.Collapsed;
+            
+            UpdateData();
         }
 
         public ICommand EnterEditFieldStateCommand { get; }
@@ -74,6 +78,8 @@ namespace Information_system.ViewModels.Base
             CreatingDataVisibility = Visibility.Collapsed;
             ViewDataVisibility = Visibility.Collapsed;
             EditDataVisibility = Visibility.Visible;
+            
+            UpdateData();
         }
 
         #endregion
@@ -93,7 +99,8 @@ namespace Information_system.ViewModels.Base
         #endregion
 
         #endregion
-        
+
+        public abstract void  UpdateData();
 
         protected UserControlViewModelBase()
         {

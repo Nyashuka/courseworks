@@ -60,11 +60,16 @@ namespace Information_system.ViewModels
             TypesOfRoomsList = _databaseService.GetAllTypesOfRooms();
         }
 
+        public override void UpdateData()
+        {
+            TypesOfRoomsList = _databaseService.GetAllTypesOfRooms();
+        }
+
         #endregion
 
         public TypesOfRoomsViewModel() : base()
         {
-           TypesOfRoomsList = _databaseService.GetAllTypesOfRooms();
+            UpdateData();
         }
     }
 }

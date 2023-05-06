@@ -172,8 +172,8 @@
                             </StackPanel>
                         </Grid>
 
-                        <Grid Grid.Column="1" Background="#313338">
-                            <ContentControl Content="{Binding CurrentContentInAdminPanel}"/>
+                        <Grid Grid.Column="1" Background="#313338" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{Binding CurrentContentInAdminPanel}"/>
                            
                         </Grid>
                     </Grid>

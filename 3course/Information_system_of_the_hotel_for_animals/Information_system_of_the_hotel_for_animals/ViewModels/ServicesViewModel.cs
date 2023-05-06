@@ -81,16 +81,21 @@ namespace Information_system.ViewModels
             _databaseService.DeleteService(obj.Id);
             ServicesList = _databaseService.GetAllServices();
         }
-        
+
+        public override void UpdateData()
+        {
+            ServicesList = _databaseService.GetAllServices();
+            Employees = _databaseService.GetAllEmployees();
+            TypesOfServices = _databaseService.GetAllTypesOfServices();
+        }
+
         #endregion
 
         
 
         public ServicesViewModel() : base()
         {
-            ServicesList = _databaseService.GetAllServices();
-            Employees = _databaseService.GetAllEmployees();
-            TypesOfServices = _databaseService.GetAllTypesOfServices();
+            UpdateData();
         }
 
 

@@ -54,12 +54,17 @@ namespace Information_system.ViewModels
             EmployeeList = _databaseService.GetAllEmployees();
         }
 
+        public override void UpdateData()
+        {
+            EmployeeList = _databaseService.GetAllEmployees();
+        }
+
         #endregion
       
         
         public EmployeesViewModel() : base()
         {
-            EmployeeList = _databaseService.GetAllEmployees();
+           UpdateData();
         }
     }
 }

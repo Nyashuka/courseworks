@@ -142,6 +142,33 @@ namespace Information_system.Infrastructure
             ExecuteQuery(query.ToString());
         }
 
+        public List<Room> GetRoomsByDateAndType(DateTime start, DateTime end, TypeOfRoom type)
+        {
+            List<Room> rooms = new List<Room>();
+
+            StringBuilder query = new StringBuilder();
+            query.Append("SELECT rooms.id, rooms.type_of_room_id, rooms.number_of_room FROM rooms ");
+            query.Append("LEFT JOIN booking ON room_id = booking.room_id ");
+            query.Append($"WHERE rooms.type_of_room_id = {type.Id} AND ");
+            query.Append("(booking.room_id IS NULL OR ");
+            query.Append($"(booking.date_of_start < '{start.ToString("yyyy-M-d hh:mm:ss")}' AND ");
+            query.Append($"booking.date_of_end < '{start.ToString("yyyy-M-d hh:mm:ss")}') OR ");
+            query.Append($"booking.date_of_start > '{start.ToString("yyyy-M-d hh:mm:ss")}' AND ");
+            query.Append($"booking.date_of_start > '{end.ToString("yyyy-M-d hh:mm:ss")}'); ");
+
+            _connection.Open();
+            using SQLiteCommand cmd = new SQLiteCommand(query.ToString(), _connection);
+            using SQLiteDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                rooms.Add(new Room(rdr.GetInt32(0), rdr.GetInt32(1), rdr.GetInt32(2)));
+            }
+
+            _connection.Close();
+
+            return rooms;
+        }
+
         public List<Room> GetAllRooms()
         {
             List<Room> rooms = new List<Room>();
@@ -247,6 +274,29 @@ namespace Information_system.Infrastructure
 
         #endregion
 
+        #region tenant
+
+        public void CreateTenant(string fullName, string phoneNumber)
+        {
+            string query = $"INSERT INTO tenants (full_name, phon_number) VALUES (\"{fullName}\", \"{phoneNumber}\");";
+            
+            ExecuteQuery(query);
+        }
+
+        #endregion
+
+        #region Booking
+
+        public void CreateBooking(int roomId, string fullName, string phoneNumber, double priceOfBooking, DateTime dateOfStart, DateTime dateOfEnd)
+        {
+            StringBuilder query = new StringBuilder();
+            query.Append("INSERT INTO booking (room_id, tenant_full_name, tenant_phone_number, price_of_booking, date_of_start, date_of_end) ");
+            query.Append($"VALUES ({roomId}, \"{fullName}\", \"{phoneNumber}\", {priceOfBooking}, '{dateOfStart.ToString("yyyy-M-d hh:mm:ss")}', '{dateOfEnd.ToString("yyyy-M-d hh:mm:ss")}');");
+            
+            ExecuteQuery(query.ToString());
+        }
+
+        #endregion
        
     }
 }

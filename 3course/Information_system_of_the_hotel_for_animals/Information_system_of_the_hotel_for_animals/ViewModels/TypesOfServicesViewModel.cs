@@ -51,11 +51,16 @@ namespace Information_system.ViewModels
             TypesOfServicesList = _databaseService.GetAllTypesOfServices();
         }
 
+        public override void UpdateData()
+        {
+            TypesOfServicesList = _databaseService.GetAllTypesOfServices();
+        }
+
         #endregion
 
         public TypesOfServicesViewModel() : base()
         {
-            TypesOfServicesList = _databaseService.GetAllTypesOfServices();
+            UpdateData();
         }
     }
 }
