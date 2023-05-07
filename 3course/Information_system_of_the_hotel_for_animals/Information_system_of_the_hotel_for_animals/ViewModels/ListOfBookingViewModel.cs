@@ -75,9 +75,9 @@ namespace Information_system.ViewModels
 
         protected override void OnCreateRecordCommandExecute(object p)
         {
-            List<Room> rooms = _databaseService.GetRoomsByDateAndType( DateOfStart, DateOfEnd, SelectedRoom);
+            List<Room> rooms = _databaseService.GetRoomsByDateAndType(DateOfStart, DateOfEnd, SelectedRoom);
 
-            if (rooms == null)
+            if (rooms.Count < 1)
             {
                 MessageBox.Show("Rooms not found");
                 return;
@@ -95,18 +95,20 @@ namespace Information_system.ViewModels
 
         protected override void OnDeleteRecordCommandExecute(object p)
         {
-           
+            Booking obj = p as Booking;
+            _databaseService.DeleteBooking(obj.Id);
+            Bookings = _databaseService.GetAllBookings();
         }
 
         public override void UpdateData()
         {
-            _bookings = new List<Booking>();
+            _bookings = _databaseService.GetAllBookings();
             TypesOfRooms = _databaseService.GetAllTypesOfRooms();
         }
         
         public ListOfBookingViewModel() : base()
         {
-            
+            UpdateData();
         }
 
       

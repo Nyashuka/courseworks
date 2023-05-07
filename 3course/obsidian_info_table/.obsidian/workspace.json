@@ -30,8 +30,8 @@
               "state": {
                 "file": "Info_tables.canvas",
                 "viewState": {
-                  "x": 25,
-                  "y": -904.5,
+                  "x": 110.66995099273481,
+                  "y": -791.9238637263325,
                   "zoom": -0.72612304807918
                 }
               }
@@ -96,7 +96,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 298.5
   },
   "right": {
     "id": "24c1929df0e0e40b",

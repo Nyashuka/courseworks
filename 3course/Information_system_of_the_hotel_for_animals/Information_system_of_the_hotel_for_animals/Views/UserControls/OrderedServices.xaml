@@ -4,9 +4,101 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Information_system_of_the_hotel_for_animals.Views.UserControls"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        
+             xmlns:vm="clr-namespace:Information_system.ViewModels"
+             d:DataContext="{d:DesignInstance vm:OrderedServicesViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800"
+             FontSize="{Binding FontSizeUserControl}">
+
+    <Grid Background="#313338">
+        <Grid Visibility="{Binding ViewDataVisibility}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30px" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Content="Order Service" Command="{Binding EnterCreatingDataStateCommand}" />
+
+            <DataGrid Grid.Row="1" AutoGenerateColumns="False"
+                      ItemsSource="{Binding OrderedServicesList}"
+                      ScrollViewer.CanContentScroll="True"
+                      VerticalScrollBarVisibility="Visible"
+                      HorizontalScrollBarVisibility="Visible">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Booking Id"
+                                        Binding="{Binding BookingId}" />
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Start Date"
+                                        Binding="{Binding ServiceId}" />
+
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete"
+                                        Command="{Binding Path=DataContext.DeleteRecord, 
+                                                        RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                        CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <Grid Visibility="{Binding CreatingDataVisibility}">
+
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="20 20 20 0">
+                    <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Booking Id"
+                                 TextAlignment="Left" />
+                    <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Service"
+                                 TextAlignment="Left" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20 20 0">
+                    <TextBox Text="{Binding BookingId}"
+                                 BorderBrush="BlueViolet" Foreground="Beige" 
+                                 TextAlignment="Center" />
+                    
+                    <ComboBox BorderBrush="BlueViolet" ItemsSource="{Binding Path=ServicesToSelect}" Foreground="Beige"
+                                  HorizontalContentAlignment="Center"
+                                  DisplayMemberPath="TitleOfService"
+                                  SelectedValuePath="TitleOfService"
+                                  SelectedItem="{Binding Path=SelectedService}"
+                                  >
+
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Background" Value="#1e1f22" />
+                                <Setter Property="BorderBrush" Value="#1e1f22" />
+                            </Style>
+
+                        </ComboBox.ItemContainerStyle>
+
+                    </ComboBox>
+
+                </StackPanel>
+
+            </Grid>
+
+            <Button Width="150px" Height="Auto" FontSize="{Binding FontSizeUserControl}" Margin="20" Content="Create" VerticalAlignment="Bottom">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding CreateRecord}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
+
+        <Grid Visibility="{Binding EditDataVisibility}">
+
+        </Grid>
     </Grid>
 </UserControl>

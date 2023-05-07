@@ -9,7 +9,7 @@
              xmlns:vm="clr-namespace:Information_system.ViewModels"
              d:DataContext="{d:DesignInstance vm:ServicesViewModel}"
              d:DesignHeight="450" d:DesignWidth="800"
-             FontSize="30">
+             FontSize="{Binding FontSizeUserControl}">
     <Grid Background="#1e1f22">
         <Grid Visibility="{Binding ViewDataVisibility}">
             <Grid.RowDefinitions>
@@ -28,6 +28,7 @@
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Title of service" Binding="{Binding TitleOfService}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Price per day" Binding="{Binding PricePerDay}" />
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Employee" Binding="{Binding EmployeeId}" />
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -38,11 +39,87 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+                    
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Modify" 
+                                        Command="{Binding Path=DataContext.ModifyRecord, 
+                                                        RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                        CommandParameter="{Binding}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
         
         <Grid Visibility="{Binding CreatingDataVisibility}" >
+            <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="20 20">
+                    <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Title of service" TextAlignment="Left" />
+                    <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Price per day" TextAlignment="Left" />
+                    <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Type of service" TextAlignment="Left" />
+                    <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Employee" TextAlignment="Left" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20">
+                    <TextBox BorderBrush="BlueViolet" Text="{Binding TitleOfService}"
+                             Foreground="Beige" TextAlignment="Center" />
+                    <TextBox BorderBrush="BlueViolet" Text="{Binding PricePerDay}"
+                             Foreground="Beige" TextAlignment="Center" />
+
+                    <ComboBox BorderBrush="BlueViolet" ItemsSource="{Binding Path=TypesOfServices}" Foreground="Beige" HorizontalContentAlignment="Center"
+                              DisplayMemberPath="TitleOfServiceType"
+                              SelectedValuePath="TitleOfServiceType"
+                              SelectedItem="{Binding Path=SelectedTypeOfService}">
+
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Background" Value="#1e1f22"/>
+                                <Setter Property="BorderBrush" Value="#1e1f22"/>
+                            </Style>
+                         
+                        </ComboBox.ItemContainerStyle>
+                        
+                    </ComboBox>
+                    
+                    <ComboBox BorderBrush="BlueViolet" ItemsSource="{Binding Path=Employees}" Foreground="Beige" HorizontalContentAlignment="Center"
+                              DisplayMemberPath="FullName"
+                              SelectedValuePath="FullName"
+                              SelectedItem="{Binding Path=SelectedEmployee}">
+
+                        <ComboBox.ItemContainerStyle>
+                            <Style TargetType="ComboBoxItem">
+                                <Setter Property="Background" Value="#1e1f22"/>
+                                <Setter Property="BorderBrush" Value="#1e1f22"/>
+                            </Style>
+                         
+                        </ComboBox.ItemContainerStyle>
+                        
+                    </ComboBox>
+
+                </StackPanel>
+
+
+            </Grid>
+
+            <Button Width="150px" Height="Auto" FontSize="{Binding FontSizeUserControl}" Margin="20" Content="Create" VerticalAlignment="Bottom">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding CreateRecord}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+        </Grid>
+        
+        <Grid Visibility="{Binding EditDataVisibility}">
             <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -97,17 +174,14 @@
 
 
             </Grid>
-            
-            <Button Width="150px" Height="Auto" FontSize="30" Margin="20" Content="Create" VerticalAlignment="Bottom">
+
+            <Button Width="150px" Height="Auto" FontSize="{Binding FontSizeUserControl}" Margin="20" Content="Save" VerticalAlignment="Bottom">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Click">
-                        <i:InvokeCommandAction Command="{Binding CreateRecord}" />
+                        <i:InvokeCommandAction Command="{Binding SaveModifying}" />
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </Button>
-        </Grid>
-        <Grid Visibility="{Binding EditDataVisibility}">
-            
         </Grid>
     </Grid>
 </UserControl>

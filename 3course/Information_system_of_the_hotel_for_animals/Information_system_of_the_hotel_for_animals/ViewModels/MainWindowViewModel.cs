@@ -99,6 +99,14 @@ namespace Information_system.ViewModels
             CurrentViewModelInAdminPanel = new TypesOfServicesViewModel();
             CurrentContentInAdminPanel = new TypesOfServices(CurrentViewModelInAdminPanel);
         }
+        
+        public ICommand LoadOrderedServices { get; }
+        private bool CanLoadOrderedServicesCommandExecute(object p) => true;
+        private void OnLoadOrderedServicesCommandExecute(object p)
+        {
+            CurrentViewModelInBooking = new OrderedServicesViewModel();
+            CurrentContentInBooking = new OrderedServices(CurrentViewModelInBooking);
+        }
         #endregion
         
         public MainWindowViewModel()
@@ -108,7 +116,10 @@ namespace Information_system.ViewModels
             LoadRooms = new LambdaCommand(OnLoadRoomsCommandExecute, CanLoadRoomsCommandExecute);
             LoadServices = new LambdaCommand(OnLoadServicesCommandExecute, CanLoadServicesCommandExecute);
             LoadTypesOfRooms = new LambdaCommand(OnLoadTypesOfRoomsCommandExecute, CanLoadTypesOfRoomsCommandExecute);
-            LoadTypesOfServices = new LambdaCommand(OnLoadTypesOfServicesCommandExecute, CanLoadTypesOfServicesCommandExecute);
+            LoadTypesOfServices = 
+                new LambdaCommand(OnLoadTypesOfServicesCommandExecute, CanLoadTypesOfServicesCommandExecute);
+            LoadOrderedServices =
+                new LambdaCommand(OnLoadOrderedServicesCommandExecute, CanLoadOrderedServicesCommandExecute);
         }
     }
 }

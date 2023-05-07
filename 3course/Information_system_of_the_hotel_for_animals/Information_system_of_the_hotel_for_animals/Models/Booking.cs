@@ -4,11 +4,12 @@ namespace Information_system.Models
 {
     public class Booking
     {
-        public Booking(int id, int roomId, int tenantId, double priceOfBooking, DateTime dateOfStart, DateTime dateOfEnd)
+        public Booking(int id, int roomId, string tenantFullName, string tenantPhoneNumber, double priceOfBooking, DateTime dateOfStart, DateTime dateOfEnd)
         {
             Id = id;
             RoomId = roomId;
-            TenantId = tenantId;
+            TenantFullName = tenantFullName;
+            TenantPhoneNumber = tenantPhoneNumber;
             PriceOfBooking = priceOfBooking;
             DateOfStart = dateOfStart;
             DateOfEnd = dateOfEnd;
@@ -16,7 +17,8 @@ namespace Information_system.Models
 
         public int Id { get; }
         public int RoomId { get; }
-        public int TenantId { get; }
+        public string TenantFullName { get; }
+        public string TenantPhoneNumber { get; }
         public double PriceOfBooking { get; }
         public DateTime DateOfStart { get; }
         public DateTime DateOfEnd { get; }

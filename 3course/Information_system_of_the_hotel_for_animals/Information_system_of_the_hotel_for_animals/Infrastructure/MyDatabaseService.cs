@@ -16,6 +16,7 @@ namespace Information_system.Infrastructure
 
         private static MyDatabaseService _instance;
 
+        
         public static MyDatabaseService Instance
         {
             get
@@ -147,14 +148,22 @@ namespace Information_system.Infrastructure
             List<Room> rooms = new List<Room>();
 
             StringBuilder query = new StringBuilder();
-            query.Append("SELECT rooms.id, rooms.type_of_room_id, rooms.number_of_room FROM rooms ");
-            query.Append("LEFT JOIN booking ON room_id = booking.room_id ");
-            query.Append($"WHERE rooms.type_of_room_id = {type.Id} AND ");
-            query.Append("(booking.room_id IS NULL OR ");
-            query.Append($"(booking.date_of_start < '{start.ToString("yyyy-M-d hh:mm:ss")}' AND ");
-            query.Append($"booking.date_of_end < '{start.ToString("yyyy-M-d hh:mm:ss")}') OR ");
-            query.Append($"booking.date_of_start > '{start.ToString("yyyy-M-d hh:mm:ss")}' AND ");
-            query.Append($"booking.date_of_start > '{end.ToString("yyyy-M-d hh:mm:ss")}'); ");
+            query.Append("SELECT * FROM rooms ");
+            query.Append("WHERE type_of_room_id = 1 AND id NOT IN ( ");
+            query.Append($"SELECT room_id FROM booking ");
+            query.Append($"WHERE ((date_of_start < '{start.ToString("yyyy-MM-dd hh:mm:ss")}' AND ");
+            query.Append($"date_of_end < '{start.ToString("yyyy-MM-dd hh:mm:ss")}') OR ");
+            query.Append($"(date_of_start > '{start.ToString("yyyy-MM-dd hh:mm:ss")}' AND ");
+            query.Append($"date_of_start > '{end.ToString("yyyy-MM-dd hh:mm:ss")}'))); ");
+
+            // query.Append("SELECT rooms.id, rooms.type_of_room_id, rooms.number_of_room FROM rooms ");
+            // query.Append("LEFT JOIN booking ON room_id = booking.room_id ");
+            // query.Append($"WHERE rooms.type_of_room_id = {type.Id} AND ");
+            // query.Append("(booking.room_id IS NULL OR ");
+            // query.Append($"(booking.date_of_start < '2023-05-03 00:00:00' AND ");
+            // query.Append($"booking.date_of_end < '2023-05-03 00:00:00') OR ");
+            // query.Append($"booking.date_of_start > '2023-05-03 00:00:00' AND ");
+            // query.Append($"booking.date_of_start > '2023-05-06 00:00:00'); ");
 
             _connection.Open();
             using SQLiteCommand cmd = new SQLiteCommand(query.ToString(), _connection);
@@ -257,13 +266,25 @@ namespace Information_system.Infrastructure
             using SQLiteDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                services.Add(new Service(rdr.GetInt32(0), rdr.GetInt32(1), 
-                    rdr.GetInt32(2), rdr.GetString(3), rdr.GetDouble(4)));
+                services.Add(new Service(rdr.GetInt32(0), 
+                                         rdr.GetInt32(1), 
+                                        (rdr.IsDBNull(2) ? null : rdr.GetInt32(2)), 
+                                         rdr.GetString(3), 
+                                         rdr.GetDouble(4)));
             }
 
             _connection.Close();
 
             return services;
+        }
+        
+        public void UpdateService(int currentServiceId, string titleOfService, double pricePerDay, int type_of_service_id, int selectedEmployeeId)
+        {
+            StringBuilder query = new StringBuilder();
+            query.Append($"UPDATE services set title_of_service=\"{titleOfService}\", price_per_day={pricePerDay}, employee_id={selectedEmployeeId}, type_of_service_id={type_of_service_id} ");
+            query.Append($"WHERE id={currentServiceId}; ");
+            
+            ExecuteQuery(query.ToString());
         }
         
         public void DeleteService(int objId)
@@ -295,8 +316,70 @@ namespace Information_system.Infrastructure
             
             ExecuteQuery(query.ToString());
         }
+        
+        public List<Booking> GetAllBookings()
+        {
+            List<Booking> bookings = new List<Booking>();
+
+            string query = "SELECT * FROM booking;";
+
+            _connection.Open();
+            using SQLiteCommand cmd = new SQLiteCommand(query, _connection);
+            using SQLiteDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                bookings.Add(new Booking(rdr.GetInt32(0), rdr.GetInt32(1), 
+                    rdr.GetString(2), rdr.GetString(3), 
+                    rdr.GetDouble(4), DateTime.Parse(rdr.GetString(5)), DateTime.Parse(rdr.GetString(6))));
+            }
+
+            _connection.Close();
+
+            return bookings;
+        }
+        
+        public void DeleteBooking(int objId)
+        {
+            string query = $"DELETE FROM booking WHERE Id={objId}";
+            ExecuteQuery(query);
+        }
 
         #endregion
-       
+
+
+        #region Ordered Services
+
+        public List<OrderedService> GetAllOrderedServices()
+        {
+            List<OrderedService> services = new List<OrderedService>();
+            
+            string query = "SELECT * FROM ordered_services";
+            
+            _connection.Open();
+            using SQLiteCommand cmd = new SQLiteCommand(query, _connection);
+            using SQLiteDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                services.Add(new OrderedService(rdr.GetInt32(0), rdr.GetInt32(1), rdr.GetInt32(2)));
+            }
+
+            _connection.Close();
+
+            return services;
+        }
+
+        public void CreateOrderedService(int bookingId, int serviceId)
+        {
+            StringBuilder query = new StringBuilder();
+            query.Append("INSERT INTO ordered_services (booking_id, service_id) ");
+            query.Append($"VALUES ({bookingId}, {serviceId});");
+
+            ExecuteQuery(query.ToString());
+        }
+
+        #endregion
+
+
+
     }
 }

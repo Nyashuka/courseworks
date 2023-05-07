@@ -7,6 +7,14 @@ namespace Information_system.ViewModels.Base
 {
     public abstract class UserControlViewModelBase : ViewModel
     {
+
+        private int _fontSizeUserControl = 25;
+        public int FontSizeUserControl
+        {
+            get => _fontSizeUserControl;
+            set => Set(ref _fontSizeUserControl, value);
+        }
+
         #region Visibility
 
         private Visibility _viewDataVisibility = Visibility.Visible;
@@ -38,7 +46,7 @@ namespace Information_system.ViewModels.Base
         protected MyDatabaseService _databaseService;
 
         #endregion
-        
+
         #region Commands
 
         #region Visibility Commands
@@ -52,7 +60,7 @@ namespace Information_system.ViewModels.Base
             CreatingDataVisibility = Visibility.Collapsed;
             ViewDataVisibility = Visibility.Visible;
             EditDataVisibility = Visibility.Collapsed;
-            
+
             UpdateData();
         }
 
@@ -65,7 +73,7 @@ namespace Information_system.ViewModels.Base
             CreatingDataVisibility = Visibility.Visible;
             ViewDataVisibility = Visibility.Collapsed;
             EditDataVisibility = Visibility.Collapsed;
-            
+
             UpdateData();
         }
 
@@ -78,7 +86,7 @@ namespace Information_system.ViewModels.Base
             CreatingDataVisibility = Visibility.Collapsed;
             ViewDataVisibility = Visibility.Collapsed;
             EditDataVisibility = Visibility.Visible;
-            
+
             UpdateData();
         }
 
@@ -90,7 +98,7 @@ namespace Information_system.ViewModels.Base
         protected bool CanCreateRecordCommandExecute(object p) => true;
 
         protected abstract void OnCreateRecordCommandExecute(object p);
-        
+
         public ICommand DeleteRecord { get; }
         protected bool CanDeleteRecordCommandExecute(object p) => true;
 
@@ -100,7 +108,7 @@ namespace Information_system.ViewModels.Base
 
         #endregion
 
-        public abstract void  UpdateData();
+        public abstract void UpdateData();
 
         protected UserControlViewModelBase()
         {
@@ -110,10 +118,10 @@ namespace Information_system.ViewModels.Base
                 CanEnterCreatingDataStateCommandExecute);
             EnterEditFieldStateCommand =
                 new LambdaCommand(OnEnterEditFieldStateCommandExecute, CanEnterEditFieldStateCommandExecute);
-            
+
             CreateRecord = new LambdaCommand(OnCreateRecordCommandExecute, CanCreateRecordCommandExecute);
             DeleteRecord = new LambdaCommand(OnDeleteRecordCommandExecute, CanDeleteRecordCommandExecute);
-            
+
             _databaseService = MyDatabaseService.Instance;
         }
     }

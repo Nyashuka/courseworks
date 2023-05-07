@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using Information_system.Infrastructure.Commands;
 using Information_system.Models;
 using Information_system.ViewModels.Base;
 
@@ -91,11 +92,52 @@ namespace Information_system.ViewModels
 
         #endregion
 
+        #region Modifying
+
+        private Service _currentService;
+
+        public Service CurrentService
+        {
+            get => _currentService;
+            set => Set(ref _currentService, value);
+        }
         
+        
+       
+        
+        public ICommand ModifyRecord { get; }
+        
+
+        private bool CanModifyRecordCommandExecute(object p) => true;
+
+        private void OnModifyRecordCommandExecute(object p)
+        {
+            EnterEditFieldStateCommand.Execute(p);
+            
+            CurrentService = p as Service;
+            TitleOfService = CurrentService.TitleOfService;
+            PricePerDay = CurrentService.PricePerDay;
+        }
+        
+        public ICommand SaveModifying { get; }
+        private bool CanSaveModifyingRecordCommandExecute(object p) => true;
+
+        private void OnSaveModifyingRecordCommandExecute(object p)
+        {
+            _databaseService.UpdateService(CurrentService.Id, TitleOfService, PricePerDay, SelectedTypeOfService.Id,
+                SelectedEmployee.Id);
+            
+            EnterViewDataStateCommand.Execute(p);
+        }
+
+        #endregion
 
         public ServicesViewModel() : base()
         {
             UpdateData();
+            
+            ModifyRecord = new LambdaCommand(OnModifyRecordCommandExecute, CanModifyRecordCommandExecute);
+            SaveModifying = new LambdaCommand(OnSaveModifyingRecordCommandExecute, CanSaveModifyingRecordCommandExecute);
         }
 
 
