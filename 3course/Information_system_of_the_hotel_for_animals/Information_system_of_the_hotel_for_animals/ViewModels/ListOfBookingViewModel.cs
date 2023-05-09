@@ -79,7 +79,7 @@ namespace Information_system.ViewModels
 
             if (rooms.Count < 1)
             {
-                MessageBox.Show("Rooms not found");
+                MessageBox.Show("Free rooms not found");
                 return;
             }
 
@@ -87,6 +87,7 @@ namespace Information_system.ViewModels
             PriceOfBooking = days * SelectedRoom.PricePerDay;
             
             _databaseService.CreateBooking(rooms[0].Id, TenantFullName, TenantPhoneNumber, PriceOfBooking, DateOfStart, DateOfEnd);
+            EnterViewDataStateCommand.Execute(p);
         }
 
         #endregion
@@ -96,7 +97,7 @@ namespace Information_system.ViewModels
         protected override void OnDeleteRecordCommandExecute(object p)
         {
             Booking obj = p as Booking;
-            _databaseService.DeleteBooking(obj.Id);
+            _databaseService.DeleteBookingById(obj.Id);
             Bookings = _databaseService.GetAllBookings();
         }
 

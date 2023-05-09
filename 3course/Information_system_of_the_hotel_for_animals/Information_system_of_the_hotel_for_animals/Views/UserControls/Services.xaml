@@ -120,7 +120,7 @@
         </Grid>
         
         <Grid Visibility="{Binding EditDataVisibility}">
-            <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -136,9 +136,9 @@
 
                 <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20">
                     <TextBox BorderBrush="BlueViolet" Text="{Binding TitleOfService}"
-                             Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center" />
+                             Foreground="Beige" TextAlignment="Center" />
                     <TextBox BorderBrush="BlueViolet" Text="{Binding PricePerDay}"
-                             Foreground="Beige" MinWidth="100px" MaxWidth="100px" TextAlignment="Center" />
+                             Foreground="Beige"  TextAlignment="Center" />
 
                     <ComboBox BorderBrush="BlueViolet" ItemsSource="{Binding Path=TypesOfServices}" Foreground="Beige" HorizontalContentAlignment="Center"
                               DisplayMemberPath="TitleOfServiceType"

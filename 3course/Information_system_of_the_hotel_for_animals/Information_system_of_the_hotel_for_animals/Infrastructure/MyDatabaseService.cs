@@ -28,7 +28,7 @@ namespace Information_system.Infrastructure
             }
         }
 
-        public MyDatabaseService()
+        private MyDatabaseService()
         {
             bool dataBaseExist = File.Exists(DatabasePath);
 
@@ -48,7 +48,7 @@ namespace Information_system.Infrastructure
             }
         }
 
-        public void ExecuteQuery(string query)
+        private void ExecuteQuery(string query)
         {
             _connection.Open();
             SQLiteCommand command = new SQLiteCommand(query, _connection);
@@ -149,22 +149,12 @@ namespace Information_system.Infrastructure
 
             StringBuilder query = new StringBuilder();
             query.Append("SELECT * FROM rooms ");
-            query.Append("WHERE type_of_room_id = 1 AND id NOT IN ( ");
+            query.Append($"WHERE type_of_room_id = {type.Id} AND id NOT IN ( ");
             query.Append($"SELECT room_id FROM booking ");
-            query.Append($"WHERE ((date_of_start < '{start.ToString("yyyy-MM-dd hh:mm:ss")}' AND ");
-            query.Append($"date_of_end < '{start.ToString("yyyy-MM-dd hh:mm:ss")}') OR ");
+            query.Append($"WHERE ( date_of_end < '{start.ToString("yyyy-MM-dd hh:mm:ss")}' OR ");
             query.Append($"(date_of_start > '{start.ToString("yyyy-MM-dd hh:mm:ss")}' AND ");
             query.Append($"date_of_start > '{end.ToString("yyyy-MM-dd hh:mm:ss")}'))); ");
-
-            // query.Append("SELECT rooms.id, rooms.type_of_room_id, rooms.number_of_room FROM rooms ");
-            // query.Append("LEFT JOIN booking ON room_id = booking.room_id ");
-            // query.Append($"WHERE rooms.type_of_room_id = {type.Id} AND ");
-            // query.Append("(booking.room_id IS NULL OR ");
-            // query.Append($"(booking.date_of_start < '2023-05-03 00:00:00' AND ");
-            // query.Append($"booking.date_of_end < '2023-05-03 00:00:00') OR ");
-            // query.Append($"booking.date_of_start > '2023-05-03 00:00:00' AND ");
-            // query.Append($"booking.date_of_start > '2023-05-06 00:00:00'); ");
-
+            
             _connection.Open();
             using SQLiteCommand cmd = new SQLiteCommand(query.ToString(), _connection);
             using SQLiteDataReader rdr = cmd.ExecuteReader();
@@ -172,7 +162,6 @@ namespace Information_system.Infrastructure
             {
                 rooms.Add(new Room(rdr.GetInt32(0), rdr.GetInt32(1), rdr.GetInt32(2)));
             }
-
             _connection.Close();
 
             return rooms;
@@ -281,7 +270,8 @@ namespace Information_system.Infrastructure
         public void UpdateService(int currentServiceId, string titleOfService, double pricePerDay, int type_of_service_id, int selectedEmployeeId)
         {
             StringBuilder query = new StringBuilder();
-            query.Append($"UPDATE services set title_of_service=\"{titleOfService}\", price_per_day={pricePerDay}, employee_id={selectedEmployeeId}, type_of_service_id={type_of_service_id} ");
+            query.Append($"UPDATE services set title_of_service=\"{titleOfService}\", price_per_day={pricePerDay}, " +
+                         $"employee_id={selectedEmployeeId}, type_of_service_id={type_of_service_id} ");
             query.Append($"WHERE id={currentServiceId}; ");
             
             ExecuteQuery(query.ToString());
@@ -312,7 +302,7 @@ namespace Information_system.Infrastructure
         {
             StringBuilder query = new StringBuilder();
             query.Append("INSERT INTO booking (room_id, tenant_full_name, tenant_phone_number, price_of_booking, date_of_start, date_of_end) ");
-            query.Append($"VALUES ({roomId}, \"{fullName}\", \"{phoneNumber}\", {priceOfBooking}, '{dateOfStart.ToString("yyyy-M-d hh:mm:ss")}', '{dateOfEnd.ToString("yyyy-M-d hh:mm:ss")}');");
+            query.Append($"VALUES ({roomId}, \"{fullName}\", \"{phoneNumber}\", {priceOfBooking}, '{dateOfStart.ToString("yyyy-MM-dd hh:mm:ss")}', '{dateOfEnd.ToString("yyyy-MM-dd hh:mm:ss")}');");
             
             ExecuteQuery(query.ToString());
         }
@@ -338,9 +328,9 @@ namespace Information_system.Infrastructure
             return bookings;
         }
         
-        public void DeleteBooking(int objId)
+        public void DeleteBookingById(int id)
         {
-            string query = $"DELETE FROM booking WHERE Id={objId}";
+            string query = $"DELETE FROM booking WHERE Id={id}";
             ExecuteQuery(query);
         }
 
@@ -379,6 +369,26 @@ namespace Information_system.Infrastructure
 
         #endregion
 
+        #region booking_addition_information
+
+        public void CreateBookingAdditionInformation(int bookingId, string breedOfAnimal, 
+                                                     string infoAboutHealth, string infoAboutNeeds)
+        {
+            StringBuilder query = new StringBuilder();
+            query.Append("INSERT INTO booking_addition_information (booking_id, breed_of_animal, info_about_animals_health, info_about_animals_needs) ");
+            query.Append($"VALUES ({bookingId}, \"{breedOfAnimal}\", \"{infoAboutHealth}\", \"{infoAboutNeeds}\"); ");
+            
+            ExecuteQuery(query.ToString());
+        }
+        
+        public void DeleteBookingAdditionInformationById(int id)
+        {
+            string query = $"DELETE FROM booking_addition_information WHERE Id={id}";
+            
+            ExecuteQuery(query);
+        }
+
+        #endregion
 
 
     }
