@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Text;
+using System.Windows;
 using Information_system.Models;
 
 namespace Information_system.Infrastructure
@@ -391,5 +393,41 @@ namespace Information_system.Infrastructure
         #endregion
 
 
+        private DataView ReadAnyData(string query)
+        {
+            _connection.Open();
+            SQLiteCommand command = new SQLiteCommand(query, _connection);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+            DataTable datatable = new DataTable("DataTable");
+            try
+            {
+                adapter.Fill(datatable);
+            }
+            catch (SQLiteException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                _connection.Close();
+            }
+
+            return datatable.DefaultView;
+        }
+
+        public DataView GetTotalPriceByBookingId(int id)
+        {
+            StringBuilder query = new StringBuilder();
+            query.Append("SELECT (CAST(julianday(b.date_of_end) - julianday(b.date_of_start) as INT)) * tr.price_per_day + ");
+            query.Append("IFNULL(SUM((CAST(julianday(b.date_of_end) - julianday(b.date_of_start) as INT)) * s.price_per_day),0) as total_price ");
+            query.Append("from booking as b ");
+            query.Append("INNER JOIN rooms as r ON r.id = b.room_id ");
+            query.Append("LEFT JOIN ordered_services as os ON os.booking_id = b.id ");
+            query.Append("LEFT JOIN services as s ON s.id = os.service_id ");
+            query.Append("INNER JOIN types_of_room as tr ON tr.id = r.type_of_room_id ");
+            query.Append($"WHERE b.id={id}; ");
+
+            return ReadAnyData(query.ToString());
+        }
     }
 }

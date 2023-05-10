@@ -103,7 +103,7 @@ namespace Information_system.ViewModels
 
         public override void UpdateData()
         {
-            _bookings = _databaseService.GetAllBookings();
+            Bookings = _databaseService.GetAllBookings();
             TypesOfRooms = _databaseService.GetAllTypesOfRooms();
         }
         

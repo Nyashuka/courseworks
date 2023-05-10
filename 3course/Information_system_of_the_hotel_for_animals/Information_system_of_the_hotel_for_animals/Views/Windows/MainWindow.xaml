@@ -77,6 +77,39 @@
 
         <Grid Grid.Row="1">
             <TabControl>
+                 <TabItem FontWeight="Bold" HorizontalAlignment="Center" Header="Infos"
+                         Style="{DynamicResource ColoredTabsStyle}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="195" MinWidth="195" MaxWidth="195" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+                        <GridSplitter Width="3" VerticalAlignment="Stretch" Panel.ZIndex="1000" />
+                        <Grid Background="#2b2d31" Grid.Column="0">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                                <Button Height="60" Margin="10 10 10 10"
+                                        Command="{Binding LoadTotalPrice}"
+                                        HorizontalContentAlignment="Left">
+                                    <StackPanel Orientation="Horizontal">
+                                        <materialDesign:PackIcon Foreground="#ffffff" Kind="House" Height="25"
+                                                                 Width="25" Margin="0 10" />
+                                        <TextBlock Text="Total price" Foreground="#ffffff"
+                                                   VerticalAlignment="Center"
+                                                   Margin="5 10" />
+                                    </StackPanel>
+                                </Button>
+                                
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Background="#313338" HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                            <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                            Content="{Binding CurrentContentInInfo}" />
+
+                        </Grid>
+                    </Grid>
+                </TabItem>
                 <TabItem FontWeight="Bold" HorizontalAlignment="Center" Header="Booking"
                          Style="{DynamicResource ColoredTabsStyle}">
                     <Grid>
@@ -202,7 +235,10 @@
 
                         </Grid>
                     </Grid>
+
                 </TabItem>
+
+               
 
 
             </TabControl>

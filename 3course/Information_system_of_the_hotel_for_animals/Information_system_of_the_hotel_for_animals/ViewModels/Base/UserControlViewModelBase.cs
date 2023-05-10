@@ -43,7 +43,7 @@ namespace Information_system.ViewModels.Base
 
         #region Database
 
-        protected MyDatabaseService _databaseService;
+        protected readonly MyDatabaseService _databaseService;
 
         #endregion
 

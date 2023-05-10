@@ -63,9 +63,6 @@
                         <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Tenant phone number" TextAlignment="Left" />
                         <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Date of start" TextAlignment="Left" />
                         <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Date of end" TextAlignment="Left" />
-                        
-                        <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="Price of booking" TextAlignment="Left" />
-
                     </StackPanel>
 
                     <StackPanel Grid.Row="0" Grid.Column="1" Margin="20 20">
@@ -89,7 +86,7 @@
                         <DatePicker SelectedDate="{Binding DateOfStart}" BorderBrush="BlueViolet" HorizontalAlignment="Center" />  
                         <DatePicker SelectedDate="{Binding DateOfEnd}" BorderBrush="BlueViolet" HorizontalAlignment="Center" />  
                         
-                        <TextBox BorderBrush="BlueViolet" Foreground="Beige" IsReadOnly="True" Text="" TextAlignment="Left" />
+                       
                     </StackPanel>
                 
                 </Grid>
