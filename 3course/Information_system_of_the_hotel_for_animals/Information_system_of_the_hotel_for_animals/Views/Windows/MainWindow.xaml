@@ -86,19 +86,18 @@
                         </Grid.ColumnDefinitions>
                         <GridSplitter Width="3" VerticalAlignment="Stretch" Panel.ZIndex="1000" />
                         <Grid Background="#2b2d31" Grid.Column="0">
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
                                 <Button Height="60" Margin="10 10 10 10"
                                         Command="{Binding LoadTotalPrice}"
-                                        HorizontalContentAlignment="Left">
-                                    <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Foreground="#ffffff" Kind="House" Height="25"
+                                        HorizontalContentAlignment="Left" >
+                                    <StackPanel Orientation="Horizontal" >
+                                        <materialDesign:PackIcon Foreground="#ffffff" Kind="Notebook" Height="25"
                                                                  Width="25" Margin="0 10" />
                                         <TextBlock Text="Total price" Foreground="#ffffff"
                                                    VerticalAlignment="Center"
                                                    Margin="5 10" />
                                     </StackPanel>
                                 </Button>
-                                
                             </StackPanel>
                         </Grid>
 
