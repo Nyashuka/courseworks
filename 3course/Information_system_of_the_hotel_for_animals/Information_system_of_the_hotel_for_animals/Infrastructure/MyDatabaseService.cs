@@ -6,6 +6,7 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using Information_system.Models;
+using Information_system.ViewModels;
 
 namespace Information_system.Infrastructure
 {
@@ -153,9 +154,9 @@ namespace Information_system.Infrastructure
             query.Append("SELECT * FROM rooms ");
             query.Append($"WHERE type_of_room_id = {type.Id} AND id NOT IN ( ");
             query.Append($"SELECT room_id FROM booking ");
-            query.Append($"WHERE ( date_of_end < '{start.ToString("yyyy-MM-dd hh:mm:ss")}' OR ");
-            query.Append($"(date_of_start > '{start.ToString("yyyy-MM-dd hh:mm:ss")}' AND ");
-            query.Append($"date_of_start > '{end.ToString("yyyy-MM-dd hh:mm:ss")}'))); ");
+            query.Append($"WHERE ( date_of_start <= '{start.ToString("yyyy-MM-dd hh:mm:ss")}' AND ");
+            query.Append($"date_of_end >= '{start.ToString("yyyy-MM-dd hh:mm:ss")}') OR ");
+            query.Append($"(date_of_start >= '{start.ToString("yyyy-MM-dd hh:mm:ss")}' AND (date_of_end >= '{end.ToString("yyyy-MM-dd hh:mm:ss")}' OR  date_of_end <= '{end.ToString("yyyy-MM-dd hh:mm:ss")}'))); ");
             
             _connection.Open();
             using SQLiteCommand cmd = new SQLiteCommand(query.ToString(), _connection);
@@ -381,6 +382,26 @@ namespace Information_system.Infrastructure
             query.Append($"VALUES ({bookingId}, \"{breedOfAnimal}\", \"{infoAboutHealth}\", \"{infoAboutNeeds}\"); ");
             
             ExecuteQuery(query.ToString());
+        }
+
+        public List<BookingAdditionInformation> GetAllAdditionInformations()
+        {
+            List<BookingAdditionInformation> informations = new List<BookingAdditionInformation>();
+
+            string query = "SELECT * FROM booking_addition_information;";
+
+            _connection.Open();
+            using SQLiteCommand cmd = new SQLiteCommand(query, _connection);
+            using SQLiteDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                informations.Add(new BookingAdditionInformation(rdr.GetInt32(0), rdr.GetInt32(1), 
+                    rdr.GetString(2), rdr.GetString(3), rdr.GetString(4)));
+            }
+
+            _connection.Close();
+            
+            return informations;
         }
         
         public void DeleteBookingAdditionInformationById(int id)

@@ -30,7 +30,7 @@
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Id" Binding="{Binding Id}" />
                     <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Booking Id"
                                         Binding="{Binding BookingId}" />
-                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Start Date"
+                    <DataGridTextColumn IsReadOnly="True" Width="1*" Header="Service Id"
                                         Binding="{Binding ServiceId}" />
 
                     <DataGridTemplateColumn>

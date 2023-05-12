@@ -142,7 +142,7 @@
                                     </StackPanel>
                                 </Button>
                                 <Button Height="60" Margin="10 10 10 10"
-                                        Command="{Binding }"
+                                        Command="{Binding LoadAdditionInformation}"
                                         HorizontalContentAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Foreground="#ffffff" Kind="Information" Height="25"

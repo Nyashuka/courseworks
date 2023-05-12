@@ -1,0 +1,14 @@
+ПО типу кімнати
+
+Шукаємо всі кімнати які підходять під тип
+
+Якої немає в списку букінг в дату яку ми задали
+
+
+
+
+05.07 - 05.8
+хочемо 05.09 - 05.10
+
+him_date_start > your_date_start && him_date_start > your_date_end ||
+him_date_start > your_date_start && him_date_end  < your_date_start ||

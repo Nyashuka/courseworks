@@ -147,6 +147,15 @@ namespace Information_system.ViewModels
             CurrentViewModelInInfo = new TotalPriceViewModel();
             CurrentContentInInfo = new TotalPriceUserControl(CurrentViewModelInInfo);
         }
+        
+        public ICommand LoadAdditionInformation { get; }
+        private bool CanLoadAdditionInformationCommandExecute(object p) => true;
+
+        private void OnLoadAdditionInformationCommandExecute(object p)
+        {
+            CurrentViewModelInBooking = new AdditionInformationViewModel();
+            CurrentContentInBooking = new AdditionInformationView(CurrentViewModelInBooking);
+        }
 
         public MainWindowViewModel()
         {
@@ -161,6 +170,9 @@ namespace Information_system.ViewModels
                 new LambdaCommand(OnLoadOrderedServicesCommandExecute, CanLoadOrderedServicesCommandExecute);
 
             LoadTotalPrice = new LambdaCommand(OnLoadTotalPriceCommandExecute, CanLoadTotalPriceCommandExecute);
+
+            LoadAdditionInformation = new LambdaCommand(OnLoadAdditionInformationCommandExecute,
+                CanLoadAdditionInformationCommandExecute);
         }
     }
 }
