@@ -41,19 +41,15 @@
             "id": "b75d7bbde9a17f6a",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Info_tables.canvas",
-                "viewState": {
-                  "x": 639.9206587168112,
-                  "y": -904.4560530040139,
-                  "zoom": -0.6012136051780508
-                }
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -188,10 +184,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b75d7bbde9a17f6a",
+  "active": "537c9dfa0aca65fa",
   "lastOpenFiles": [
-    "Topic.md",
+    "Untitled 1.md",
     "Info_tables.canvas",
-    "Untitled.md"
+    "Untitled",
+    "Untitled.md",
+    "Topic.md"
   ]
 }

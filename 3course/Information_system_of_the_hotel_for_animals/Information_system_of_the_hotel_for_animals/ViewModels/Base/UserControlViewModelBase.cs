@@ -7,7 +7,6 @@ namespace Information_system.ViewModels.Base
 {
     public abstract class UserControlViewModelBase : ViewModel
     {
-
         private int _fontSizeUserControl = 25;
         public int FontSizeUserControl
         {

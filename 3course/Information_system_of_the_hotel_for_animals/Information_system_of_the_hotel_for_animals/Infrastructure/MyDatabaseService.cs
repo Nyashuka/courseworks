@@ -273,8 +273,8 @@ namespace Information_system.Infrastructure
         public void UpdateService(int currentServiceId, string titleOfService, double pricePerDay, int type_of_service_id, int selectedEmployeeId)
         {
             StringBuilder query = new StringBuilder();
-            query.Append($"UPDATE services set title_of_service=\"{titleOfService}\", price_per_day={pricePerDay}, " +
-                         $"employee_id={selectedEmployeeId}, type_of_service_id={type_of_service_id} ");
+            query.Append($"UPDATE services set title_of_service=\"{titleOfService}\", price_per_day={pricePerDay}, ");
+            query.Append($"employee_id={selectedEmployeeId}, type_of_service_id={type_of_service_id} ");
             query.Append($"WHERE id={currentServiceId}; ");
             
             ExecuteQuery(query.ToString());

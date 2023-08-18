@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Restaurant.IngredientUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Restaurant"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             MinWidth="650px" Height="auto" Width="auto"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid x:Name="IngredientData"  Tag="">
+        <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.8}">
+
+            <Border Background="#dde0e3" BorderThickness="2" CornerRadius="15">
+
+                <StackPanel HorizontalAlignment="Center" Orientation="Vertical" Margin="0 0 0 20">
+                    <TextBox x:Name="IngredientName" TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   IsReadOnly="True"  Width="300px"
+                                   Text="Паштет" 
+                                   HorizontalAlignment="Center" 
+                                   FontSize="20"  FontWeight="Bold"
+                                   Margin="5 0 0 0" />
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox  TextAlignment="Left"
+                                   TextWrapping="Wrap"
+                                   IsReadOnly="True" 
+                                   Text="Кількість на складі:" 
+                                   HorizontalAlignment="Center" 
+                                   FontSize="20"  FontWeight="Bold"
+                                   Margin="5 0" />
+
+                        <TextBox x:Name="IngredientWeight" TextAlignment="Left"
+                                       TextWrapping="Wrap"
+                                       IsReadOnly="True"  
+                                       Text="200гр." 
+                                       HorizontalAlignment="Center" 
+                                       FontSize="20" 
+                                       Margin="5 0" />
+
+                    </StackPanel>
+                    
+                    
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox   TextAlignment="Left"
+                                       TextWrapping="Wrap"
+                                       IsReadOnly="True"  
+                                       Text="Ціна за 1кг:" 
+                                       HorizontalAlignment="Center" 
+                                       FontSize="20"  FontWeight="Bold"
+                                       Margin="5 0" />
+
+                        <TextBox x:Name="IngredientPrice" TextAlignment="Left"
+                                       TextWrapping="Wrap"
+                                       IsReadOnly="True"  
+                                       Text="140грн." 
+                                       HorizontalAlignment="Center" 
+                                       FontSize="20" 
+                                       Margin="5 0 0 0" />
+                        
+                        
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Right"  Orientation="Horizontal">
+                        <Button Content="Редагувати" Margin="5" Click="ButtonEdit_Click"/>
+                        <Button Content="Видалити" Margin="5" Click="ButtonDelete_Click"/>
+                    </StackPanel>
+                   
+
+                </StackPanel>
+
+
+
+            </Border>
+
+        </materialDesign:TransitioningContent>
+    </Grid>
+</UserControl>

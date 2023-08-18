@@ -1,0 +1,161 @@
+﻿<Window x:Class="SportClubISS.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:SportClubISS.ViewModels"
+        xmlns:local="clr-namespace:SportClubISS"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Information system of support of sport club" MinHeight="600" MinWidth="850" Height="600" Width="850" >
+    
+    <Window.DataContext>
+        <vm:MainWindowViewModel />
+    </Window.DataContext>
+    
+    
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250" MinWidth="250" MaxWidth="250" />
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+            <GridSplitter Width="3" VerticalAlignment="Stretch" Panel.ZIndex="1000" />
+            <Grid Grid.Column="0">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Button Height="60" Margin="10 0 5 0" Width="160px"
+                                Command="{Binding LoadSpecializationsCommand}"
+                                HorizontalContentAlignment="Left" >
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Foreground="#ffffff" Kind="Extension" Height="25"
+                                                         Width="25" Margin="0 10" />
+                                <TextBlock Text="Specializations" Foreground="#ffffff"
+                                           VerticalAlignment="Center"
+                                           Margin="5 10" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="60" Margin="5 0 5 0" Width="60"
+                                Command="{Binding CreateSpecializationsCommand}"
+                                HorizontalContentAlignment="Center" >
+                            <materialDesign:PackIcon Foreground="#ffffff" Kind="Plus" Height="25"
+                                                     Width="25" Margin="0 10" />
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Button Height="60" Margin="10 0 5 0" Width="160px"
+                                Command="{Binding LoadSportsmenCommand}"
+                                HorizontalContentAlignment="Left" >
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Foreground="#ffffff" Kind="Billiards" Height="25"
+                                                         Width="25" Margin="0 10" />
+                                <TextBlock Text="Sportsmen" Foreground="#ffffff"
+                                           VerticalAlignment="Center"
+                                           Margin="5 10" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="60" Margin="5 0 5 0" Width="60"
+                                Command="{Binding CreateSportsmanCommand}"
+                                HorizontalContentAlignment="Center" >
+                            <materialDesign:PackIcon Foreground="#ffffff" Kind="Plus" Height="25"
+                                                     Width="25" Margin="0 10" />
+                        </Button>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Button Height="60" Margin="10 0 5 0" Width="160px"
+                                Command="{Binding LoadCoachesCommand}"
+                                HorizontalContentAlignment="Left" >
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Foreground="#ffffff" Kind="Weight" Height="25"
+                                                         Width="25" Margin="0 10" />
+                                <TextBlock Text="Coaches" Foreground="#ffffff"
+                                           VerticalAlignment="Center"
+                                           Margin="5 10" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="60" Margin="5 0 5 0" Width="60"
+                                Command="{Binding CreateCoachesCommand}"
+                                HorizontalContentAlignment="Center" >
+                            <materialDesign:PackIcon Foreground="#ffffff" Kind="Plus" Height="25"
+                                                     Width="25" Margin="0 10" />
+                        </Button>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Button Height="60" Margin="10 0 5 0" Width="160px"
+                                Command="{Binding LoadSportClubsCommand}"
+                                HorizontalContentAlignment="Left" >
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Foreground="#ffffff" Kind="House" Height="25"
+                                                         Width="25" Margin="0 10" />
+                                <TextBlock Text="Sport clubs" Foreground="#ffffff"
+                                           VerticalAlignment="Center"
+                                           Margin="5 10" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="60" Margin="5 0 5 0" Width="60"
+                                Command="{Binding CreateSportClubCommand}"
+                                HorizontalContentAlignment="Center" >
+                            <materialDesign:PackIcon Foreground="#ffffff" Kind="Plus" Height="25"
+                                                     Width="25" Margin="0 10" />
+                        </Button>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <Button Height="60" Margin="10 0 5 0" Width="160px"
+                                Command="{Binding LoadCompetitionsCommand}"
+                                HorizontalContentAlignment="Left" >
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Foreground="#ffffff" Kind="Run" Height="25"
+                                                         Width="25" Margin="0 10" />
+                                <TextBlock Text="Competitions" Foreground="#ffffff"
+                                           VerticalAlignment="Center"
+                                           Margin="5 10" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="60" Margin="5 0 5 0" Width="60"
+                                Command="{Binding CreateCompetitionCommand}"
+                                HorizontalContentAlignment="Center" >
+                            <materialDesign:PackIcon Foreground="#ffffff" Kind="Plus" Height="25"
+                                                     Width="25" Margin="0 10" />
+                        </Button>
+                    </StackPanel>
+                    <Button Height="60" Margin="10 10 10 10"
+                            Command="{Binding LoadRatesCommand}"
+                            HorizontalContentAlignment="Left" >
+                        <StackPanel Orientation="Horizontal" >
+                            <materialDesign:PackIcon Foreground="#ffffff" Kind="Podium" Height="25"
+                                                     Width="25" Margin="0 10" />
+                            <TextBlock Text="Rates" Foreground="#ffffff"
+                                       VerticalAlignment="Center"
+                                       Margin="5 10" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                
+                <Button Height="60" Margin="10 10 10 10"
+                        Command="{Binding SaveDataCommand}"
+                        HorizontalContentAlignment="Left" VerticalAlignment="Bottom">
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Foreground="#ffffff" Kind="File" Height="25"
+                                                 Width="25" Margin="0 10" />
+                        <TextBlock Text="Save all" Foreground="#ffffff"
+                                   VerticalAlignment="Center"
+                                   Margin="5 10" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+            
+            <Grid Grid.Column="1" HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch">
+                <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Content="{Binding CurrentContent}" />
+                
+            </Grid>
+            
+            
+        </Grid>
+    </Grid>
+</Window>

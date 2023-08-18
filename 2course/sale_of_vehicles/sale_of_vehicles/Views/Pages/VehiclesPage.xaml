@@ -37,7 +37,7 @@
                         <TextBox Text="Type of Fuel" TextAlignment="Center"/>
 
                         <ComboBox  x:Name="FuelsTypeFilter" HorizontalContentAlignment="Center" SelectionChanged="FuelsTypeFilter_SelectionChanged" >
-                            <ComboBoxItem  Content="All"></ComboBoxItem>
+                            <ComboBoxItem Content="All"></ComboBoxItem>
                             <ComboBoxItem Content="Car's Fuel"></ComboBoxItem>
                             <ComboBoxItem Content="Aviation's Fuel"></ComboBoxItem>
                         </ComboBox>

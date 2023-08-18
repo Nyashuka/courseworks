@@ -101,13 +101,9 @@ namespace Information_system.ViewModels
             get => _currentService;
             set => Set(ref _currentService, value);
         }
-        
-        
-       
-        
+
         public ICommand ModifyRecord { get; }
         
-
         private bool CanModifyRecordCommandExecute(object p) => true;
 
         private void OnModifyRecordCommandExecute(object p)
@@ -139,8 +135,5 @@ namespace Information_system.ViewModels
             ModifyRecord = new LambdaCommand(OnModifyRecordCommandExecute, CanModifyRecordCommandExecute);
             SaveModifying = new LambdaCommand(OnSaveModifyingRecordCommandExecute, CanSaveModifyingRecordCommandExecute);
         }
-
-
-      
     }
 }
