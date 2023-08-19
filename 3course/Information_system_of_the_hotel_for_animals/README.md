@@ -1,0 +1,1 @@
+If program crash need to create folder database in build folder and copy file creating_database_sql.sql in this

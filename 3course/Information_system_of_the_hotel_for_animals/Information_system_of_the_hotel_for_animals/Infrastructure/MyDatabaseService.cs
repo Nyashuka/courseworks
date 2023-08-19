@@ -6,7 +6,6 @@ using System.IO;
 using System.Text;
 using System.Windows;
 using Information_system.Models;
-using Information_system.ViewModels;
 
 namespace Information_system.Infrastructure
 {
